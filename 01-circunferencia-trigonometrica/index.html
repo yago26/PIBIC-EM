@@ -13,19 +13,31 @@
   </head>
 
   <body>
-    <div class="container">
-      <h2>Conversor</h2>
-      <label for="radInput">
-        Radianos:
-        <input id="radInput" type="text" name="rad" />
-      </label>
+    <div class="funcionalidades">
+      <div class="container">
+        <h2>Conversor</h2>
+        <label for="radInput">
+          Radianos:
+          <input id="radInput" type="text" name="rad" />
+        </label>
+        <label for="grauInput">
+          Graus:
+          <input id="grauInput" type="text" name="grau" />
+        </label>
+        <button onclick="converter()">converter</button>
+      </div>
 
-      <label for="grauInput">
-        Graus:
-        <input id="grauInput" type="text" name="grau" />
-      </label>
-
-      <button onclick="converter()">converter</button>
+      <div class="container">
+        <h2>Angulos</h2>
+        <input
+          id="anguloInput"
+          type="text"
+          name="angulo"
+          placeholder="digite um ângulo..."
+        />
+        <button onclick="mostrarValoresDoAngulo()">consultar valores</button>
+        <div id="resultado"></div>
+      </div>
     </div>
 
     <script src="sketch.js"></script>

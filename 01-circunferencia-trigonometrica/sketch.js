@@ -13,6 +13,5 @@ function draw() {
   circ.renderizarTelaInicial();
   circ.mostrarVetorLinha();
 
-  circ.mostrarAngulos();
   circ.mostrarQuadrantes();
 }

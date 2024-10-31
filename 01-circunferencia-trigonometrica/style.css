@@ -3,6 +3,12 @@
   padding: 0;
 }
 
+body {
+  display: flex;
+  gap: 50px;
+  padding: 20px;
+}
+
 canvas {
   display: block;
 }

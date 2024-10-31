@@ -1,10 +1,10 @@
-let angulos;
+let graus;
 let tamanho = 20;
 
 function setup() {
   createCanvas(400, 400);
 
-  angulos = [
+  graus = [
     new Angulo(0, 40, tamanho, 90),
     new Angulo(90, 52, tamanho, 75),
     new Angulo(180, 90, tamanho, 60),
@@ -21,8 +21,8 @@ function draw() {
   fill("white");
   stroke("black");
   circle(0, height, 720);
-  for (let angulo of angulos) {
-    angulo.mostrar(true, 0.8);
-    angulo.mostrarValores();
+  for (let grau of graus) {
+    grau.mostrar();
+    grau.mostrarValores();
   }
 }
