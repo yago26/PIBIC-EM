@@ -1,5 +1,4 @@
 let circ;
-
 function setup() {
   createCanvas(400, 400);
   circ = new Circunferencia(180);
