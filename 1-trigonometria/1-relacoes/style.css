@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 2% 3%;
+}
+
+canvas {
+  display: block;
+}
+
+section,
+main {
+  margin-inline: 10%;
+}
+
+.voltar {
+  position: absolute;
+  top: 66%;
+}

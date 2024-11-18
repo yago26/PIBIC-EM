@@ -15,31 +15,36 @@ class Circunferencia {
           width / 2 + this.diametro / 2,
           height / 2,
           this.pontoTamanho,
-          0
+          0,
+          { x: 10, y: 5 }
         ),
         new Angulo(
           width / 2 + width / 5,
-          height / 2 - 40,
+          height / 2 - 41,
           this.pontoTamanho,
-          30
+          30,
+          { x: 5, y: -10 }
         ),
         new Angulo(
           width / 2 + width / 6,
           height / 2 - 60,
           this.pontoTamanho,
-          45
+          45,
+          { x: 5, y: -10 + 1 }
         ),
         new Angulo(
           width / 2 + width / 8,
           height / 2 - 75,
           this.pontoTamanho,
-          60
+          60,
+          { x: 5, y: -10 }
         ),
         new Angulo(
           width / 2,
           height / 2 - this.diametro / 2,
           this.pontoTamanho,
-          90
+          90,
+          { x: -10, y: -10 }
         ),
       ],
       2: [
@@ -47,31 +52,36 @@ class Circunferencia {
           width / 2,
           height / 2 - this.diametro / 2,
           this.pontoTamanho,
-          90
+          90,
+          { x: -10, y: -10 }
         ),
         new Angulo(
           width / 2 - width / 8,
           height / 2 - 75,
           this.pontoTamanho,
-          120
+          120,
+          { x: -35, y: -10 }
         ),
         new Angulo(
           width / 2 - width / 6,
           height / 2 - 60,
           this.pontoTamanho,
-          135
+          135,
+          { x: -35, y: -10 + 1 }
         ),
         new Angulo(
           width / 2 - width / 5,
-          height / 2 - 40,
+          height / 2 - 42,
           this.pontoTamanho,
-          150
+          150,
+          { x: -35, y: -10 }
         ),
         new Angulo(
           width / 2 - this.diametro / 2,
           height / 2,
           this.pontoTamanho,
-          180
+          180,
+          { x: -45, y: 5 }
         ),
       ],
       3: [
@@ -79,31 +89,36 @@ class Circunferencia {
           width / 2 - this.diametro / 2,
           height / 2,
           this.pontoTamanho,
-          180
+          180,
+          { x: -45, y: 5 }
         ),
         new Angulo(
           width / 2 - width / 5,
-          height / 2 + 40,
+          height / 2 + 41,
           this.pontoTamanho,
-          210
+          210,
+          { x: -35, y: 25 }
         ),
         new Angulo(
           width / 2 - width / 6,
           height / 2 + 60,
           this.pontoTamanho,
-          225
+          225,
+          { x: -35, y: 25 - 1 }
         ),
         new Angulo(
           width / 2 - width / 8,
           height / 2 + 75,
           this.pontoTamanho,
-          240
+          240,
+          { x: -35, y: 25 }
         ),
         new Angulo(
           width / 2,
           height / 2 + this.diametro / 2,
           this.pontoTamanho,
-          270
+          270,
+          { x: -15, y: 25 }
         ),
       ],
       4: [
@@ -111,65 +126,71 @@ class Circunferencia {
           width / 2,
           height / 2 + this.diametro / 2,
           this.pontoTamanho,
-          270
+          270,
+          { x: -15, y: 25 }
         ),
         new Angulo(
           width / 2 + width / 8,
           height / 2 + 75,
           this.pontoTamanho,
-          300
+          300,
+          { x: 0, y: 25 }
         ),
         new Angulo(
           width / 2 + width / 6,
           height / 2 + 60,
           this.pontoTamanho,
-          315
+          315,
+          { x: 0, y: 25 }
         ),
         new Angulo(
           width / 2 + width / 5,
           height / 2 + 40,
           this.pontoTamanho,
-          330
+          330,
+          { x: 0, y: 25 }
         ),
         new Angulo(
           width / 2 + this.diametro / 2,
           height / 2,
           this.pontoTamanho,
-          360
+          360,
+          { x: 10, y: 5 }
         ),
       ],
     };
   }
 
   mostrar() {
-    fill("white");
+    push();
     stroke("black");
     circle(width / 2, height / 2, this.diametro);
+    pop();
   }
 
   mostrarLinhas() {
+    push();
     stroke("red");
+    strokeWeight(0.4);
     line(width / 2, 0, width / 2, height);
     line(0, height / 2, width, height / 2);
+    pop();
   }
 
   renderizarTelaInicial() {
-    if (!this.sobCanvas()) {
-      this.telaInicial.mostrar();
-    }
+    this.telaInicial.mostrar();
   }
 
   mostrarVetorLinha() {
-    if (this.sobCanvas()) {
+    if (this.telaInicial.sobCanvas()) {
       this.vetorLinha.mostrar();
     }
   }
 
   mostrarQuadrantes() {
-    if (!this.sobCanvas()) return;
+    if (!this.telaInicial.sobCanvas()) return;
 
     if (mouseX >= width / 2 && mouseX < width && mouseY <= height / 2) {
-      if (mouseIsPressed) window.location = "quadrantes/1-quadrante.html";
       for (let graus of this.quadrantes[1]) {
         graus.mostrar();
         graus.mostrarValores();
@@ -195,9 +216,5 @@ class Circunferencia {
         graus.mostrarValores();
       }
     }
-  }
-
-  sobCanvas() {
-    return mouseX >= 0 && mouseX < width && mouseY >= 0 && mouseY < height;
   }
 }

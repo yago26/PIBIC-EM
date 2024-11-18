@@ -1,35 +1,29 @@
 class Angulo {
-  constructor(x, y, diametro, graus) {
+  constructor(x, y, diametro, graus, pos) {
     this.x = x;
     this.y = y;
     this.diametro = diametro;
     this.graus = graus;
+    this.pos = pos;
     angleMode(DEGREES);
   }
 
   mostrar() {
+    push();
     this.sobMouse() ? fill("blue") : fill("black");
     this.sobMouse() ? stroke("blue") : stroke("black");
     circle(this.x, this.y, this.diametro);
 
     textSize(18);
-    text(`${this.graus}°`, this.x + 20, this.y - 5);
+    text(`${this.graus}°`, this.x + this.pos.x, this.y + this.pos.y);
+    pop();
   }
 
   mostrarValores() {
     if (this.sobMouse()) {
-      seno.innerHTML = `Seno: ${180 >= this.graus ? "+" : "-"}${
-        angulos[this.graus].seno
-      }`;
-      cosseno.innerHTML = `Cosseno: ${
-        this.graus >= 90 && this.graus <= 270 ? "-" : "+"
-      }${angulos[this.graus].cosseno}`;
-      tangente.innerHTML = `Tangente: ${
-        (this.graus <= 90 && this.graus >= 0) ||
-        (this.graus <= 270 && this.graus >= 180)
-          ? "+"
-          : "-"
-      }${angulos[this.graus].tangente}`;
+      seno.innerHTML = `Seno: ${angulos[this.graus].seno}`;
+      cosseno.innerHTML = `Cosseno: ${angulos[this.graus].cosseno}`;
+      tangente.innerHTML = `Tangente: ${angulos[this.graus].tangente}`;
 
       document.querySelector("main").appendChild(angulosContainer);
     } else if (keyIsPressed && keyCode === 32) {
@@ -79,87 +73,87 @@ const tabelaTrigonometrica = {
 const angulos = {
   0: {
     seno: tabelaTrigonometrica[0].seno,
-    cosseno: tabelaTrigonometrica[0].cosseno,
+    cosseno: "+" + tabelaTrigonometrica[0].cosseno,
     tangente: tabelaTrigonometrica[0].tangente,
   },
   30: {
-    seno: tabelaTrigonometrica[30].seno,
-    cosseno: tabelaTrigonometrica[30].cosseno,
-    tangente: tabelaTrigonometrica[30].tangente,
+    seno: "+" + tabelaTrigonometrica[30].seno,
+    cosseno: "+" + tabelaTrigonometrica[30].cosseno,
+    tangente: "+" + tabelaTrigonometrica[30].tangente,
   },
   45: {
-    seno: tabelaTrigonometrica[45].seno,
-    cosseno: tabelaTrigonometrica[45].cosseno,
-    tangente: tabelaTrigonometrica[45].tangente,
+    seno: "+" + tabelaTrigonometrica[45].seno,
+    cosseno: "+" + tabelaTrigonometrica[45].cosseno,
+    tangente: "+" + tabelaTrigonometrica[45].tangente,
   },
   60: {
-    seno: tabelaTrigonometrica[60].seno,
-    cosseno: tabelaTrigonometrica[60].cosseno,
-    tangente: tabelaTrigonometrica[60].tangente,
+    seno: "+" + tabelaTrigonometrica[60].seno,
+    cosseno: "+" + tabelaTrigonometrica[60].cosseno,
+    tangente: "+" + tabelaTrigonometrica[60].tangente,
   },
   90: {
-    seno: tabelaTrigonometrica[90].seno,
+    seno: "+" + tabelaTrigonometrica[90].seno,
     cosseno: tabelaTrigonometrica[90].cosseno,
     tangente: tabelaTrigonometrica[90].tangente,
   },
   120: {
-    seno: tabelaTrigonometrica[60].seno,
-    cosseno: tabelaTrigonometrica[60].cosseno,
-    tangente: tabelaTrigonometrica[60].tangente,
+    seno: "+" + tabelaTrigonometrica[60].seno,
+    cosseno: "- " + tabelaTrigonometrica[60].cosseno,
+    tangente: "-" + tabelaTrigonometrica[60].tangente,
   },
   135: {
-    seno: tabelaTrigonometrica[45].seno,
-    cosseno: tabelaTrigonometrica[45].cosseno,
-    tangente: tabelaTrigonometrica[45].tangente,
+    seno: "+" + tabelaTrigonometrica[45].seno,
+    cosseno: "- " + tabelaTrigonometrica[45].cosseno,
+    tangente: "-" + tabelaTrigonometrica[45].tangente,
   },
   150: {
-    seno: tabelaTrigonometrica[30].seno,
-    cosseno: tabelaTrigonometrica[30].cosseno,
-    tangente: tabelaTrigonometrica[30].tangente,
+    seno: "+" + tabelaTrigonometrica[30].seno,
+    cosseno: "- " + tabelaTrigonometrica[30].cosseno,
+    tangente: "- " + tabelaTrigonometrica[30].tangente,
   },
   180: {
-    seno: tabelaTrigonometrica[90].seno,
+    seno: "+" + tabelaTrigonometrica[90].seno,
     cosseno: tabelaTrigonometrica[90].cosseno,
     tangente: tabelaTrigonometrica[90].tangente,
   },
   210: {
-    seno: tabelaTrigonometrica[30].seno,
-    cosseno: tabelaTrigonometrica[30].cosseno,
-    tangente: tabelaTrigonometrica[30].tangente,
+    seno: "- " + tabelaTrigonometrica[30].seno,
+    cosseno: "- " + tabelaTrigonometrica[30].cosseno,
+    tangente: "+" + tabelaTrigonometrica[30].tangente,
   },
   225: {
-    seno: tabelaTrigonometrica[45].seno,
-    cosseno: tabelaTrigonometrica[45].cosseno,
-    tangente: tabelaTrigonometrica[45].tangente,
+    seno: "- " + tabelaTrigonometrica[45].seno,
+    cosseno: "- " + tabelaTrigonometrica[45].cosseno,
+    tangente: "+" + tabelaTrigonometrica[45].tangente,
   },
   240: {
-    seno: tabelaTrigonometrica[60].seno,
-    cosseno: tabelaTrigonometrica[60].cosseno,
-    tangente: tabelaTrigonometrica[60].tangente,
+    seno: "- " + tabelaTrigonometrica[60].seno,
+    cosseno: "- " + tabelaTrigonometrica[60].cosseno,
+    tangente: "+" + tabelaTrigonometrica[60].tangente,
   },
   270: {
-    seno: tabelaTrigonometrica[90].seno,
+    seno: "-" + tabelaTrigonometrica[90].seno,
     cosseno: tabelaTrigonometrica[90].cosseno,
     tangente: tabelaTrigonometrica[90].tangente,
   },
   300: {
-    seno: tabelaTrigonometrica[60].seno,
-    cosseno: tabelaTrigonometrica[60].cosseno,
-    tangente: tabelaTrigonometrica[60].tangente,
+    seno: "- " + tabelaTrigonometrica[60].seno,
+    cosseno: "+" + tabelaTrigonometrica[60].cosseno,
+    tangente: "-" + tabelaTrigonometrica[60].tangente,
   },
   315: {
-    seno: tabelaTrigonometrica[45].seno,
-    cosseno: tabelaTrigonometrica[45].cosseno,
-    tangente: tabelaTrigonometrica[45].tangente,
+    seno: "- " + tabelaTrigonometrica[45].seno,
+    cosseno: "+" + tabelaTrigonometrica[45].cosseno,
+    tangente: "-" + tabelaTrigonometrica[45].tangente,
   },
   330: {
-    seno: tabelaTrigonometrica[30].seno,
-    cosseno: tabelaTrigonometrica[30].cosseno,
-    tangente: tabelaTrigonometrica[30].tangente,
+    seno: "- " + tabelaTrigonometrica[30].seno,
+    cosseno: "+" + tabelaTrigonometrica[30].cosseno,
+    tangente: "- " + tabelaTrigonometrica[30].tangente,
   },
   360: {
     seno: tabelaTrigonometrica[0].seno,
-    cosseno: tabelaTrigonometrica[0].cosseno,
+    cosseno: "+" + tabelaTrigonometrica[0].cosseno,
     tangente: tabelaTrigonometrica[0].tangente,
   },
 };

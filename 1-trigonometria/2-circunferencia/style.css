@@ -24,3 +24,8 @@ canvas {
 input {
   width: 100%;
 }
+
+.voltar {
+  position: absolute;
+  top: 65%;
+}
