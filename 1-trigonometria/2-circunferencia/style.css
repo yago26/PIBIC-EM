@@ -4,13 +4,17 @@
 }
 
 body {
-  display: flex;
-  gap: 50px;
-  padding: 20px;
+  padding: 2% 3%;
 }
 
 canvas {
   display: block;
+}
+
+#agrupador {
+  display: flex;
+  gap: 50px;
+  padding: 20px 35px;
 }
 
 .container {
@@ -27,5 +31,6 @@ input {
 
 .voltar {
   position: absolute;
-  top: 65%;
+  font-weight: bold;
+  top: 93%;
 }

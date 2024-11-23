@@ -1,10 +1,10 @@
-let triRent;
+let triRet;
 function setup() {
   createCanvas(400, 400);
-  triRent = new TrianguloRetangulo();
+  triRet = new TrianguloRetangulo();
 }
 
 function draw() {
   background(245);
-  triRent.mostrar();
+  triRet.mostrar();
 }

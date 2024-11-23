@@ -1,29 +1,33 @@
 class Angulo {
-  constructor(x, y, diametro, graus, pos) {
-    this.x = x;
-    this.y = y;
-    this.diametro = diametro;
-    this.graus = graus;
-    this.pos = pos;
+  constructor(raio, angulo, posTexto) {
+    this.raio = raio;
+    this.angulo = angulo;
+    this.posTexto = posTexto;
+
+    this.diametro = 7.5;
     angleMode(DEGREES);
+    this.x = cos(-angulo) * raio + width / 2;
+    this.y = sin(-angulo) * raio + height / 2;
   }
 
   mostrar() {
     push();
-    this.sobMouse() ? fill("blue") : fill("black");
-    this.sobMouse() ? stroke("blue") : stroke("black");
+    let cor = this.sobMouse() ? "blue" : "black";
+    fill(cor);
     circle(this.x, this.y, this.diametro);
 
     textSize(18);
-    text(`${this.graus}°`, this.x + this.pos.x, this.y + this.pos.y);
+    text(`${this.angulo}°`, this.x + this.posTexto.x, this.y + this.posTexto.y);
     pop();
   }
 
   mostrarValores() {
     if (this.sobMouse()) {
-      seno.innerHTML = `Seno: ${angulos[this.graus].seno}`;
-      cosseno.innerHTML = `Cosseno: ${angulos[this.graus].cosseno}`;
-      tangente.innerHTML = `Tangente: ${angulos[this.graus].tangente}`;
+      this.cor = "blue";
+
+      seno.innerHTML = `Sen: ${angulos[this.angulo].seno}`;
+      cosseno.innerHTML = `Cos: ${angulos[this.angulo].cosseno}`;
+      tangente.innerHTML = `Tan: ${angulos[this.angulo].tangente}`;
 
       document.querySelector("main").appendChild(angulosContainer);
     } else if (keyIsPressed && keyCode === 32) {
@@ -52,20 +56,20 @@ const tabelaTrigonometrica = {
   30: {
     seno: "<math><mfrac><mrow><mn>1</mn></mrow><mn>2</mn></mfrac></math>",
     cosseno:
-      "<math><mfrac><mrow><msqrt><mn>3</mn></msqrt></mrow><mn>2</mn></mfrac></math>",
+      "<math><mfrac><mrow><mn>&radic;3</mn></mrow><mn>2</mn></mfrac></math>",
     tangente:
-      "<math><mfrac><mrow><msqrt><mn>3</mn></msqrt></mrow><mn>3</mn></mfrac></math>",
+      "<math><mfrac><mrow><mn>&radic;3</mn></mrow><mn>3</mn></mfrac></math>",
   },
   45: {
-    seno: "<math><mfrac><mrow><msqrt><mn>2</mn></msqrt></mrow><mn>2</mn></mfrac></math>",
+    seno: "<math><mfrac><mrow><mn>&radic;2</mn></mrow><mn>2</mn></mfrac></math>",
     cosseno:
-      "<math><mfrac><mrow><msqrt><mn>2</mn></msqrt></mrow><mn>2</mn></mfrac></math>",
+      "<math><mfrac><mrow><mn>&radic;2</mn></mrow><mn>2</mn></mfrac></math>",
     tangente: "1",
   },
   60: {
-    seno: "<math><mfrac><mrow><msqrt><mn>3</mn></msqrt></mrow><mn>2</mn></mfrac></math>",
+    seno: "<math><mfrac><mrow><mn>&radic;3</mn></mrow><mn>2</mn></mfrac></math>",
     cosseno: "<math><mfrac><mrow><mn>1</mn></mrow><mn>2</mn></mfrac></math>",
-    tangente: "<math><msqrt><mn>3</mn></msqrt></math>",
+    tangente: "<math><mn>&radic;3</mn></math>",
   },
   90: { seno: "1", cosseno: "0", tangente: "∄" },
 };

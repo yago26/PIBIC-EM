@@ -7,37 +7,57 @@
     <title>Circunferência Trigonométrica</title>
 
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
 
     <script src="../../libraries/p5.min.js"></script>
     <script src="../../libraries/p5.sound.min.js"></script>
   </head>
 
   <body>
-    <div class="funcionalidades">
-      <div class="container">
-        <h2>Conversor</h2>
-        <label for="radInput">
-          Radianos:
-          <input id="radInput" type="text" name="rad" />
-        </label>
-        <label for="grauInput">
-          Graus:
-          <input id="grauInput" type="text" name="grau" />
-        </label>
-        <button onclick="converter()">converter</button>
+    <h1>Circunferencia Trigonométrica</h1>
+    <hr />
+    <div id="agrupador">
+      <div class="funcionalidades">
+        <div class="container">
+          <h2>Conversor</h2>
+          <label for="radInput">
+            Radianos:
+            <input id="radInput" type="text" name="rad" />
+          </label>
+          <label for="grauInput">
+            Graus:
+            <input id="grauInput" type="text" name="grau" />
+          </label>
+          <button onclick="converter()">converter</button>
+        </div>
+        <div class="container">
+          <h2>Ângulos</h2>
+          <input
+            id="anguloInput"
+            type="text"
+            name="angulo"
+            placeholder="digite um ângulo..."
+          />
+          <button onclick="mostrarValoresDoAngulo()">consultar valores</button>
+          <div id="resultado"></div>
+        </div>
       </div>
-
-      <div class="container">
-        <h2>Ângulos</h2>
-        <input
-          id="anguloInput"
-          type="text"
-          name="angulo"
-          placeholder="digite um ângulo..."
-        />
-        <button onclick="mostrarValoresDoAngulo()">consultar valores</button>
-        <div id="resultado"></div>
+      <span class="voltar"><a href="../../index.html">Voltar</a></span>
+      <hr style="height: 500px" />
+      <div class="funcionalidades">
+        <div class="container">
+          <h2>Primeira Ocorrência Positiva</h2>
+          <input
+            id="ocorrenciaPositivaInput"
+            class="campo"
+            type="text"
+            placeholder="ângulo..."
+            name="ocorrenciaPositiva"
+          />
+          <button>consultar</button>
+        </div>
       </div>
+      <hr style="height: 500px" />
     </div>
 
     <script src="sketch.js"></script>
@@ -46,7 +66,5 @@
     <script src="src/TelaInicial.js"></script>
     <script src="src/VetorLinha.js"></script>
     <script src="src/Angulo.js"></script>
-
-    <span class="voltar"><a href="../../index.html">Voltar</a></span>
   </body>
 </html>

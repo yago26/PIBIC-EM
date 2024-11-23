@@ -1,7 +1,11 @@
 class TelaInicial {
-  constructor(diametro, pontoTamanho) {
+  constructor(diametro) {
     this.diametro = diametro;
-    this.pontoTamanho = pontoTamanho;
+    this.pontoTamanho = 10;
+
+    let divAgrupador = document.getElementById("agrupador");
+    let main = document.querySelector("main");
+    divAgrupador.appendChild(main);
   }
 
   mostrar() {
