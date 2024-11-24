@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Circunferência Trigonométrica</title>
+    <title>PIBIC-EM | Circunferência Trigonométrica</title>
 
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" type="text/css" href="../../style.css" />
@@ -14,8 +14,12 @@
   </head>
 
   <body>
-    <h1>Circunferencia Trigonométrica</h1>
+    <h1 class="titulo">
+      <span id="voltar"><a href="../../index.html">PIBIC-EM</a></span> &gt;
+      Circunferencia Trigonométrica
+    </h1>
     <hr />
+
     <div id="agrupador">
       <div class="funcionalidades">
         <div class="container">
@@ -39,11 +43,14 @@
             placeholder="digite um ângulo..."
           />
           <button onclick="mostrarValoresDoAngulo()">consultar valores</button>
-          <div id="resultado"></div>
+          <div id="resultadoAngulo"></div>
         </div>
       </div>
-      <span class="voltar"><a href="../../index.html">Voltar</a></span>
-      <hr style="height: 500px" />
+
+      <hr class="divisor" />
+
+      <hr class="divisor" id="divisorPrincipal" />
+
       <div class="funcionalidades">
         <div class="container">
           <h2>Primeira Ocorrência Positiva</h2>
@@ -51,13 +58,15 @@
             id="ocorrenciaPositivaInput"
             class="campo"
             type="text"
-            placeholder="ângulo..."
+            placeholder="digite um ângulo..."
             name="ocorrenciaPositiva"
           />
-          <button>consultar</button>
+          <button onclick="mostrarPrimeiraOcorrenciaPositiva()">
+            consultar
+          </button>
+          <div id="resultadoOcorrenciaPositiva"></div>
         </div>
       </div>
-      <hr style="height: 500px" />
     </div>
 
     <script src="sketch.js"></script>

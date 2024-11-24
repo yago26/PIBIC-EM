@@ -1,14 +1,8 @@
-html,
-body {
+* {
   margin: 0;
   padding: 0;
 }
 
-canvas {
-  display: block;
-}
-
-.voltar {
-  position: absolute;
-  top: 62%;
+body {
+  padding: 2% 3%;
 }

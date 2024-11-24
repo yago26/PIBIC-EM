@@ -4,8 +4,9 @@ class TelaInicial {
     this.pontoTamanho = 10;
 
     let divAgrupador = document.getElementById("agrupador");
+    let hrDivisor = document.getElementById("divisorPrincipal");
     let main = document.querySelector("main");
-    divAgrupador.appendChild(main);
+    divAgrupador.insertBefore(main, hrDivisor);
   }
 
   mostrar() {
@@ -17,7 +18,7 @@ class TelaInicial {
       fill("gray");
       stroke("gray");
 
-      text("Seno", width / 2 - 20, 25);
+      text("Sen", width / 2 - 15, 25);
       text("Cos", width - 45, height / 2 + 5);
 
       fill("black");
@@ -71,7 +72,7 @@ class TelaInicial {
       stroke("black");
 
       // SENO
-      text("Seno", width / 2 - 25, 25);
+      text("Sen", width / 2 - 20, 25);
       circle(width / 2, height / 2 - this.diametro / 2, this.pontoTamanho);
       text(
         "1",

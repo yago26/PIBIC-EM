@@ -3,3 +3,26 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
+canvas {
+  display: block;
+}
+
+.titulo {
+  color: red;
+}
+
+#agrupador {
+  display: flex;
+  gap: 50px;
+  padding: 20px 35px;
+}
+
+#voltar a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+#voltar a:hover {
+  text-decoration: underline;
+}

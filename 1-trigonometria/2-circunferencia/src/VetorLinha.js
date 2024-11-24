@@ -5,6 +5,7 @@ class VetorLinha {
     this.raio = raio;
     this.cor = cor;
   }
+
   mostrar() {
     push();
     fill(this.cor);
@@ -23,9 +24,10 @@ class VetorLinha {
     );
     pop();
   }
+
   mostrarLinhas() {
     push();
-    stroke("green");
+    stroke("red");
     line(
       this.origem.x + this.sentido.x,
       this.origem.y + this.sentido.y,
@@ -41,42 +43,54 @@ class VetorLinha {
     );
     pop();
   }
+
   mostrarAngulo() {
     push();
     fill("black");
-    circle(this.origem.x + this.sentido.x, this.origem.y + this.sentido.y, 5);
-
-    let senoValor = -(this.origem.y + this.sentido.y - height / 2) / this.raio;
+    let senValor = -(this.origem.y + this.sentido.y - height / 2) / this.raio;
     let cosValor = (this.origem.x + this.sentido.x - width / 2) / this.raio;
-
-    fill("green");
-    text(`sen: ${senoValor.toFixed(3)}`, 40, 40);
-    fill("blue");
-    text(`cos: ${cosValor.toFixed(3)}`, 40, 55);
-    fill("white");
-    text(`tan: ${(senoValor / cosValor).toFixed(3)}`, 40, 70);
 
     let angulo =
       this.origem.y + this.sentido.y <= height / 2
         ? Math.round(acos(cosValor))
         : 360 - Math.round(acos(cosValor));
-    noFill();
+
+    senValor = sin(angulo);
+    cosValor = cos(angulo);
+
+    stroke("green");
+    fill(color(200, 255, 215));
     arc(width / 2, height / 2, 30, 30, -angulo, 0);
-    let posTexto = {
-      x: angulo <= 90 ? 10 : angulo <= 180 ? -40 : angulo <= 270 ? -40 : -5,
-      y: angulo <= 90 ? -10 : angulo <= 180 ? -10 : angulo <= 270 ? 25 : 25,
-    };
-    let anguloVetor = new Angulo(this.raio, angulo, {
-      x: posTexto.x,
-      y: posTexto.y,
-    });
-    anguloVetor.mostrar();
+
+    noStroke();
+
+    fill("red");
+    text(`sen: ${senValor.toFixed(3)}`, 40, 50);
+    fill("blue");
+    text(`cos: ${cosValor.toFixed(3)}`, 40, 65);
+    fill("green");
+    text(
+      `tan: ${
+        angulo === 90 || angulo === 270 ? "∄" : (senValor / cosValor).toFixed(3)
+      }`,
+      40,
+      80
+    );
+
     fill("black");
     text(
       `${angulo}°`,
       cos(-angulo) * (this.raio / 3) + width / 2 - this.raio / 10,
       sin(-angulo) * (this.raio / 3) + height / 2 + this.raio / 30
     );
+
+    pop();
+  }
+
+  mostrarPonto() {
+    push();
+    fill("black");
+    circle(this.origem.x + this.sentido.x, this.origem.y + this.sentido.y, 7.5);
     pop();
   }
 }

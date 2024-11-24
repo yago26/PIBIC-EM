@@ -13,21 +13,32 @@ const converter = () => {
 };
 
 const angulo = document.getElementById("anguloInput");
-const res = document.getElementById("resultado");
+const resAngulo = document.getElementById("resultadoAngulo");
 
 const mostrarValoresDoAngulo = () => {
   if (!angulo.value) return;
-  res.innerHTML = `Os valores de ${eval(angulo.value)}° são:`;
+  resAngulo.innerHTML = `Os valores de ${eval(angulo.value)}° são:`;
   if (angulos.hasOwnProperty(eval(angulo.value))) {
-    res.innerHTML += ` 
-    <br>Seno: ${angulos[Number(eval(angulo.value))].seno}
-    <br>Cosseno: ${angulos[Number(eval(angulo.value))].cosseno}
-    <br>Tangente: ${angulos[Number(eval(angulo.value))].tangente}`;
+    resAngulo.innerHTML += ` 
+    <br>Sen: ${angulos[Number(eval(angulo.value))].seno}
+    <br>Cos: ${angulos[Number(eval(angulo.value))].cosseno}
+    <br>Tan: ${angulos[Number(eval(angulo.value))].tangente}`;
   } else {
-    res.innerHTML += ` 
-    <br>Seno: ${sin(eval(angulo.value)).toFixed(3)}
-    <br>Cosseno: ${cos(eval(angulo.value)).toFixed(3)}
-    <br>Tangente: ${tan(eval(angulo.value)).toFixed(3)}`;
+    resAngulo.innerHTML += ` 
+    <br>Sen: ${sin(eval(angulo.value)).toFixed(3)}
+    <br>Cos: ${cos(eval(angulo.value)).toFixed(3)}
+    <br>Tan: ${tan(eval(angulo.value)).toFixed(3)}`;
   }
   angulo.value = "";
+};
+
+const resPOP = document.getElementById("resultadoOcorrenciaPositiva");
+const anguloPOP = document.getElementById("ocorrenciaPositivaInput");
+const mostrarPrimeiraOcorrenciaPositiva = () => {
+  if (!anguloPOP.value) return;
+  resPOP.innerHTML = `
+  O ângulo ${eval(anguloPOP.value)}° corresponde ao ângulo de ${
+    eval(anguloPOP.value) % 360
+  }°`;
+  anguloPOP.value = "";
 };

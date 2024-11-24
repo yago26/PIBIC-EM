@@ -5,7 +5,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(255);
 
   circ.mostrar();
   circ.mostrarLinhas();

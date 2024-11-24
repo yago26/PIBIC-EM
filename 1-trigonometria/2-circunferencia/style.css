@@ -7,16 +7,6 @@ body {
   padding: 2% 3%;
 }
 
-canvas {
-  display: block;
-}
-
-#agrupador {
-  display: flex;
-  gap: 50px;
-  padding: 20px 35px;
-}
-
 .container {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -29,8 +19,6 @@ input {
   width: 100%;
 }
 
-.voltar {
-  position: absolute;
-  font-weight: bold;
-  top: 93%;
+.divisor {
+  height: 500px;
 }

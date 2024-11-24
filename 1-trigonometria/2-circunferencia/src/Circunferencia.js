@@ -104,10 +104,16 @@ class Circunferencia {
 
   mostrarLinhas() {
     push();
-    stroke("red");
+    stroke("gray");
     strokeWeight(0.4);
-    line(width / 2, 0, width / 2, height);
-    line(0, height / 2, width, height / 2);
+
+    for (let i = 0; i <= width; i += width / 10) {
+      line(i, 0, i, height);
+    }
+
+    for (let i = 0; i <= height; i += height / 10) {
+      line(0, i, width, i);
+    }
     pop();
   }
 
@@ -118,8 +124,9 @@ class Circunferencia {
   mostrarVetorLinha() {
     if (this.telaInicial.sobCanvas()) {
       this.vetorLinha.mostrar();
-      this.vetorLinha.mostrarLinhas();
       this.vetorLinha.mostrarAngulo();
+      this.vetorLinha.mostrarLinhas();
+      this.vetorLinha.mostrarPonto();
     }
   }
 

@@ -7,16 +7,15 @@ body {
   padding: 2% 3%;
 }
 
-canvas {
-  display: block;
+#agrupador {
+  align-items: center;
 }
 
-section,
-main {
-  margin-inline: 10%;
+#voltar a {
+  text-decoration: none;
+  color: #007bff;
 }
 
-.voltar {
-  position: absolute;
-  top: 66%;
+#voltar a:hover {
+  text-decoration: underline;
 }

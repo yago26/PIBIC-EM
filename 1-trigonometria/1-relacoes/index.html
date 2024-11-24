@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Relações Trigonométricas</title>
+    <title>PIBIC-EM | Relações Trigonométricas</title>
 
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" type="text/css" href="../../style.css" />
@@ -14,11 +14,13 @@
   </head>
 
   <body>
-    <header>
-      <h1>Relações Trigonométricas</h1>
-      <hr />
-    </header>
-    <section>
+    <h1 class="titulo">
+      <span id="voltar"><a href="../../index.html">PIBIC-EM</a></span> &gt;
+      Relações Trigonométricas
+    </h1>
+    <hr />
+
+    <div id="agrupador">
       <table border="2px" style="text-align: center">
         <thead>
           <th></th>
@@ -99,57 +101,42 @@
         </tbody>
         <tfoot></tfoot>
       </table>
-      <h2>Ângulos</h2>
-      <input
-        id="catetoA"
-        type="range"
-        onchange="catetoB.value = 90 - value; displayA.value = value; displayB.value = 90 - value"
-        min="30"
-        max="60"
-        step="15"
-      />
-      <input
-        type="number"
-        id="displayA"
-        value="45"
-        onchange="if (value > 60) {value = 60} if (value < 30) {value = 30} if (!(value % 15 === 0)) {return} catetoA.value = value; catetoB.value = 90 - value; displayB.value = 90 - value"
-      />
-      <input
-        id="catetoB"
-        type="range"
-        onchange="catetoA.value = 90 - value; displayA.value = 90 - value; displayB.value = value"
-        min="30"
-        max="60"
-        step="15"
-      />
-      <input
-        type="number"
-        id="displayB"
-        value="45"
-        onchange="if (value > 60) {value = 60} if (value < 30) {value = 30} if (!(value % 15 === 0)) {return} catetoA.value = 90 - value; catetoB.value = value; displayA.value = 90 - value"
-      />
-    </section>
-
-    <span class="voltar"><a href="../../index.html">Voltar</a></span>
-
-    <!--
-    <input
-      id="catetoA"
-      type="range"
-      onchange="catetoB.value = 90 - value; displayA.value = value; displayB.value = 90 - value"
-      min="0"
-      max="90"
-    />
-    <input type="number" id="displayA" oninput="" />
-    <input
-      id="catetoB"
-      type="range"
-      onchange="catetoA.value = 90 - value; displayA.value = 90 - value; displayB.value = value"
-      min="0"
-      max="90"
-    />
-    <input type="number" id="displayB" readonly />
-    -->
+      <div class="container">
+        <h2>Ângulos</h2>
+        <div class="separador">
+          <input
+            id="catetoA"
+            type="range"
+            onchange="catetoB.value = 90 - value; displayA.value = value; displayB.value = 90 - value"
+            min="30"
+            max="60"
+            step="15"
+          />
+          <input
+            type="number"
+            id="displayA"
+            value="45"
+            onchange="if (value > 60) {value = 60} if (value < 30) {value = 30} if (!(value % 15 === 0)) {return} catetoA.value = value; catetoB.value = 90 - value; displayB.value = 90 - value"
+          />
+        </div>
+        <div class="separador">
+          <input
+            id="catetoB"
+            type="range"
+            onchange="catetoA.value = 90 - value; displayA.value = 90 - value; displayB.value = value"
+            min="30"
+            max="60"
+            step="15"
+          />
+          <input
+            type="number"
+            id="displayB"
+            value="45"
+            onchange="if (value > 60) {value = 60} if (value < 30) {value = 30} if (!(value % 15 === 0)) {return} catetoA.value = 90 - value; catetoB.value = value; displayA.value = 90 - value"
+          />
+        </div>
+      </div>
+    </div>
 
     <script src="sketch.js"></script>
     <script src="TrianguloRetangulo.js"></script>
