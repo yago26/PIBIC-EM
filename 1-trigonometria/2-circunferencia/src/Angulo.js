@@ -1,9 +1,8 @@
 class Angulo {
-  constructor(raio, angulo, posTexto, setCor = true) {
+  constructor(raio, angulo, posTexto) {
     this.raio = raio;
     this.angulo = angulo;
     this.posTexto = posTexto;
-    this.setCor = setCor;
 
     this.diametro = 7.5;
     angleMode(DEGREES);
@@ -13,7 +12,7 @@ class Angulo {
 
   mostrar() {
     push();
-    let cor = this.sobMouse() && this.setCor ? "blue" : "black";
+    let cor = this.sobMouse() ? "blue" : "black";
     fill(cor);
     stroke(cor);
     circle(this.x, this.y, this.diametro);

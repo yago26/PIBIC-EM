@@ -114,6 +114,11 @@ class Circunferencia {
     for (let i = 0; i <= height; i += height / 10) {
       line(0, i, width, i);
     }
+
+    stroke("purple");
+    strokeWeight(0.8);
+    line(width / 2, 0, width / 2, height);
+    line(0, height / 2, width, height / 2);
     pop();
   }
 

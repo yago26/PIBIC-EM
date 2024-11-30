@@ -28,18 +28,27 @@ class VetorLinha {
   mostrarLinhas() {
     push();
     stroke("red");
-    line(
-      this.origem.x + this.sentido.x,
-      this.origem.y + this.sentido.y,
-      this.origem.x + this.sentido.x,
-      height / 2
-    );
+    line(width / 2, this.origem.y + this.sentido.y, width / 2, height / 2);
     stroke("blue");
     line(
       this.origem.x,
       this.origem.y,
       this.origem.x + this.sentido.x,
       this.origem.y
+    );
+    this.linhaPontilhada(
+      this.origem.x,
+      this.origem.y + this.sentido.y,
+      this.origem.x + this.sentido.x,
+      this.origem.y + this.sentido.y,
+      "gray"
+    );
+    this.linhaPontilhada(
+      this.origem.x + this.sentido.x,
+      this.origem.y,
+      this.origem.x + this.sentido.x,
+      this.origem.y + this.sentido.y,
+      "gray"
     );
     pop();
   }
@@ -59,7 +68,7 @@ class VetorLinha {
     cosValor = cos(angulo);
 
     stroke("green");
-    fill(color(200, 255, 215));
+    fill(color(200, 255, 215, 70));
     arc(width / 2, height / 2, 30, 30, -angulo, 0);
 
     noStroke();
@@ -89,8 +98,28 @@ class VetorLinha {
 
   mostrarPonto() {
     push();
-    fill("black");
+    fill("gray");
+    stroke("gray");
     circle(this.origem.x + this.sentido.x, this.origem.y + this.sentido.y, 7.5);
+    pop();
+  }
+
+  linhaPontilhada(x1, y1, x2, y2, cor) {
+    push();
+    fill("gray");
+    stroke("gray");
+    let distancia = dist(x1, y1, x2, y2);
+
+    let numPontos = floor(distancia / 5);
+
+    let dx = (x2 - x1) / numPontos;
+    let dy = (y2 - y1) / numPontos;
+
+    for (let i = 0; i <= numPontos; i++) {
+      let x = x1 + dx * i;
+      let y = y1 + dy * i;
+      circle(x, y, 2);
+    }
     pop();
   }
 }

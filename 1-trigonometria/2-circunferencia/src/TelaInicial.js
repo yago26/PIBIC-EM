@@ -12,14 +12,15 @@ class TelaInicial {
   mostrar() {
     push();
     if (this.sobCanvas()) {
+      this.mostrarSetas(7.5);
       textSize(16);
       strokeWeight(0.8);
 
       fill("gray");
       stroke("gray");
 
-      text("Sen", width / 2 - 15, 25);
-      text("Cos", width - 45, height / 2 + 5);
+      text("Sen", width / 2 - 16, 20);
+      text("Cos", width - 35, height / 2 + 5);
 
       fill("black");
       stroke("black");
@@ -47,32 +48,16 @@ class TelaInicial {
         height / 2 + 5
       );
     } else {
-      textSize(20);
+      textSize(19);
       strokeWeight(0.8);
 
-      fill("red");
-      stroke("red");
-      line(
-        width / 2 - this.diametro / 2,
-        height / 2,
-        width / 2 + this.diametro / 2,
-        height / 2
-      );
-
-      fill("blue");
-      stroke("blue");
-      line(
-        width / 2,
-        height / 2 - this.diametro / 2,
-        width / 2,
-        height / 2 + this.diametro / 2
-      );
+      this.mostrarSetas(10);
 
       fill("black");
       stroke("black");
 
       // SENO
-      text("Sen", width / 2 - 20, 25);
+      text("Sen", width / 2 - 20, 20);
       circle(width / 2, height / 2 - this.diametro / 2, this.pontoTamanho);
       text(
         "1",
@@ -87,7 +72,7 @@ class TelaInicial {
       );
 
       // COSSENO
-      text("Cos", width - 45, height / 2 + 5);
+      text("Cos", width - 36, height / 2 + 5);
       circle(width / 2 - this.diametro / 2, height / 2, this.pontoTamanho);
       text("1", width / 2 + this.diametro / 2 + 8, height / 2 + 5);
       circle(width / 2 + this.diametro / 2, height / 2, this.pontoTamanho);
@@ -97,6 +82,32 @@ class TelaInicial {
         height / 2 + 5
       );
     }
+    pop();
+  }
+
+  mostrarSetas(espacamento) {
+    push();
+    fill("purple");
+    stroke("purple");
+    strokeWeight(1.6);
+
+    // Seno
+    line(width / 2, 40, width / 2 - espacamento / 2, 40 + espacamento);
+    line(width / 2, 40, width / 2 + espacamento / 2, 40 + espacamento);
+
+    // Cosseno
+    line(
+      width - 40,
+      height / 2,
+      width - 40 - espacamento,
+      height / 2 - espacamento / 2
+    );
+    line(
+      width - 40,
+      height / 2,
+      width - 40 - espacamento,
+      height / 2 + espacamento / 2
+    );
     pop();
   }
 

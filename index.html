@@ -19,10 +19,6 @@
         text-indent: 5%;
       }
 
-      ol ol {
-        margin-left: 20px;
-      }
-
       .content a {
         text-decoration: none;
         color: #007bff;
@@ -30,6 +26,33 @@
 
       .content a:hover {
         text-decoration: underline;
+      }
+
+      ol {
+        counter-reset: item;
+        list-style-type: none;
+      }
+
+      ol > li {
+        counter-increment: item;
+      }
+
+      ol > li::before {
+        content: counter(item) ". ";
+      }
+
+      ol ol {
+        counter-reset: subitem;
+        list-style-type: none;
+        margin-left: 20px;
+      }
+
+      ol ol > li {
+        counter-increment: subitem;
+      }
+
+      ol ol > li::before {
+        content: counter(item) "." counter(subitem) ". ";
       }
     </style>
   </head>
