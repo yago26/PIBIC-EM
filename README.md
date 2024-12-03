@@ -1,7 +1,6 @@
 <h1 align="center">:computer: Projeto PIBIC-EM</h1>
 <br>
-
-**Tema:** Utilização da Computação Gráfica como ferramenta auxiliar na aprendizagem matemática
+**Tema**: Utilização da Computação Gráfica como ferramenta auxiliar na aprendizagem matemática
 
 ## :memo: Introdução
 
