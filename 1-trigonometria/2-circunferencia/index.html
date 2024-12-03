@@ -16,7 +16,7 @@
   <body>
     <h1 class="titulo">
       <span id="voltar"><a href="../../index.html">PIBIC-EM</a></span> &gt;
-      Circunferencia Trigonométrica
+      Circunferência Trigonométrica
     </h1>
     <hr />
 
@@ -26,13 +26,18 @@
           <h2>Conversor</h2>
           <label for="radInput">
             Radianos:
-            <input id="radInput" type="text" name="rad" />
+            <input id="radInput" type="text" name="rad" placeholder="Ex.: 2" />
           </label>
           <label for="grauInput">
             Graus:
-            <input id="grauInput" type="text" name="grau" />
+            <input
+              id="grauInput"
+              type="text"
+              name="grau"
+              placeholder="Ex.: 360"
+            />
           </label>
-          <button onclick="converter()">converter</button>
+          <button class="btn" onclick="converter()">converter</button>
         </div>
         <div class="container">
           <h2>Ângulos</h2>
@@ -42,7 +47,9 @@
             name="angulo"
             placeholder="digite um ângulo..."
           />
-          <button onclick="mostrarValoresDoAngulo()">consultar valores</button>
+          <button class="btn" onclick="mostrarValoresDoAngulo()">
+            consultar valores
+          </button>
           <div id="resultadoAngulo"></div>
         </div>
       </div>
@@ -61,7 +68,7 @@
             placeholder="digite um ângulo..."
             name="ocorrenciaPositiva"
           />
-          <button onclick="mostrarPrimeiraOcorrenciaPositiva()">
+          <button class="btn" onclick="mostrarPrimeiraOcorrenciaPositiva()">
             consultar
           </button>
           <div id="resultadoOcorrenciaPositiva"></div>

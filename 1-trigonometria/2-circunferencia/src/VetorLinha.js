@@ -74,13 +74,13 @@ class VetorLinha {
     noStroke();
 
     fill("red");
-    text(`sen: ${senValor.toFixed(3)}`, 40, 50);
+    text(`sen: ${senValor.toFixed(4)}`, 40, 50);
     fill("blue");
-    text(`cos: ${cosValor.toFixed(3)}`, 40, 65);
+    text(`cos: ${cosValor.toFixed(4)}`, 40, 65);
     fill("green");
     text(
       `tan: ${
-        angulo === 90 || angulo === 270 ? "∄" : (senValor / cosValor).toFixed(3)
+        angulo === 90 || angulo === 270 ? "∄" : (senValor / cosValor).toFixed(4)
       }`,
       40,
       80

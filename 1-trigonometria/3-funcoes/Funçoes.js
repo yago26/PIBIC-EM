@@ -1,5 +1,8 @@
 class FuncTrigonometrica {
-  constructor() {}
+  constructor() {
+    this.inicio = -360;
+    // f(x) = a*sen(b*x + c) + d
+  }
 
   mostrar() {}
 
@@ -8,12 +11,12 @@ class FuncTrigonometrica {
     stroke("gray");
     strokeWeight(0.4);
 
-    for (let i = 0; i <= width; i += width / 10) {
+    for (let i = this.inicio; i <= width; i += width / 30) {
       line(i, 0, i, height);
     }
 
     for (let i = 0; i <= height; i += height / 10) {
-      line(0, i, width, i);
+      line(this.inicio, i, width, i);
     }
     pop();
   }

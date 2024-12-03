@@ -19,8 +19,8 @@ class TelaInicial {
       fill("gray");
       stroke("gray");
 
-      text("Sen", width / 2 - 16, 20);
-      text("Cos", width - 35, height / 2 + 5);
+      text("Sen", width / 2 - 15, 20);
+      text("Cos", width - 35, height / 2 + 5.5);
 
       fill("black");
       stroke("black");
@@ -57,7 +57,7 @@ class TelaInicial {
       stroke("black");
 
       // SENO
-      text("Sen", width / 2 - 20, 20);
+      text("Sen", width / 2 - 18, 20);
       circle(width / 2, height / 2 - this.diametro / 2, this.pontoTamanho);
       text(
         "1",
@@ -72,7 +72,7 @@ class TelaInicial {
       );
 
       // COSSENO
-      text("Cos", width - 36, height / 2 + 5);
+      text("Cos", width - 36, height / 2 + 6.5);
       circle(width / 2 - this.diametro / 2, height / 2, this.pontoTamanho);
       text("1", width / 2 + this.diametro / 2 + 8, height / 2 + 5);
       circle(width / 2 + this.diametro / 2, height / 2, this.pontoTamanho);
@@ -92,8 +92,8 @@ class TelaInicial {
     strokeWeight(1.6);
 
     // Seno
-    line(width / 2, 40, width / 2 - espacamento / 2, 40 + espacamento);
-    line(width / 2, 40, width / 2 + espacamento / 2, 40 + espacamento);
+    line(width / 2, 20 + 7, width / 2 - espacamento / 2, 20 + 7 + espacamento);
+    line(width / 2, 20 + 7, width / 2 + espacamento / 2, 20 + 7 + espacamento);
 
     // Cosseno
     line(
