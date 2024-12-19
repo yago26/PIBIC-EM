@@ -109,9 +109,9 @@ const mostrarPrimeiraOcorrenciaPositiva = () => {
   if (Math.sign(eval(anguloPOP.value)) === -1) {
     let divisao = parseInt(-eval(anguloPOP.value) / 360);
     alert(
-      `POP = ${eval(anguloPOP.value)}° + 360° * k\nk = Inteiro(${-eval(
+      `POP = ${eval(anguloPOP.value)}° + 360° * (k + 1)\nk = Inteiro(${-eval(
         anguloPOP.value
-      )}° / 360°) + 1\nPOP = ${eval(anguloPOP.value)}° + 360° * ${
+      )}° / 360°)\nPOP = ${eval(anguloPOP.value)}° + 360° * ${
         divisao + 1
       }\nPOP = ${eval(anguloPOP.value) + 360 * (divisao + 1)}°`
     );
