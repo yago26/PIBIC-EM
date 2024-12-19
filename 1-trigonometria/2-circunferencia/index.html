@@ -6,6 +6,12 @@
 
     <title>PIBIC-EM | Circunferência Trigonométrica</title>
 
+    <link
+      rel="shortcut icon"
+      href="../../assets/favicon-16x16.png"
+      type="image/x-icon"
+    />
+
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" type="text/css" href="../../style.css" />
 
@@ -14,75 +20,108 @@
   </head>
 
   <body>
-    <h1 class="titulo">
-      <span id="voltar"><a href="../../index.html">PIBIC-EM</a></span> &gt;
-      Circunferência Trigonométrica
-    </h1>
-    <hr />
+    <header>
+      <h1 class="titulo">
+        <span id="voltar"><a href="../../index.html">PIBIC-EM</a></span> &gt;
+        Circunferência Trigonométrica
+      </h1>
+      <hr />
+    </header>
 
-    <div id="agrupador">
-      <div class="funcionalidades">
-        <div class="container">
-          <h2>Conversor</h2>
-          <label for="radInput">
-            Radianos:
-            <input id="radInput" type="text" name="rad" placeholder="Ex.: 2" />
-          </label>
-          <label for="grauInput">
-            Graus:
+    <div class="conteudo">
+      <section id="agrupador">
+        <section class="funcionalidades">
+          <div class="container camposSuperiores">
+            <h2>Conversor</h2>
+            <label for="radInput">
+              Radianos:
+              <input
+                id="radInput"
+                class="campo"
+                type="text"
+                name="rad"
+                placeholder="Ex.: 2"
+              />
+            </label>
+            <label for="grauInput">
+              Graus:
+              <input
+                id="grauInput"
+                class="campo"
+                type="text"
+                name="grau"
+                placeholder="Ex.: 360"
+              />
+            </label>
+            <button class="btn" onclick="converter()">converter</button>
+          </div>
+          <div class="container">
+            <h2>Ângulos</h2>
             <input
-              id="grauInput"
+              id="anguloInput"
+              class="campo"
               type="text"
-              name="grau"
-              placeholder="Ex.: 360"
+              name="angulo"
+              placeholder="digite um ângulo..."
             />
-          </label>
-          <button class="btn" onclick="converter()">converter</button>
-        </div>
-        <div class="container">
-          <h2>Ângulos</h2>
-          <input
-            id="anguloInput"
-            type="text"
-            name="angulo"
-            placeholder="digite um ângulo..."
-          />
-          <button class="btn" onclick="mostrarValoresDoAngulo()">
-            consultar valores
-          </button>
-          <div id="resultadoAngulo"></div>
-        </div>
-      </div>
-
-      <hr class="divisor" />
-
-      <hr class="divisor" id="divisorPrincipal" />
-
-      <div class="funcionalidades">
-        <div class="container">
-          <h2>Primeira Ocorrência Positiva</h2>
-          <input
-            id="ocorrenciaPositivaInput"
-            class="campo"
-            type="text"
-            placeholder="digite um ângulo..."
-            name="ocorrenciaPositiva"
-          />
-          <button class="btn" onclick="mostrarPrimeiraOcorrenciaPositiva()">
-            consultar
-          </button>
-          <div id="resultadoOcorrenciaPositiva"></div>
-        </div>
-      </div>
-      <p style="position: absolute; left: 70%; top: 80%">
-        <strong>OBS:</strong> Configurações para <strong>radianos</strong>,
-        <strong>ângulos negativos</strong> e
-        <strong>projeção da linha da tangente</strong>.
-      </p>
+            <button class="btn" onclick="mostrarValoresDoAngulo()">
+              consultar valores
+            </button>
+            <div id="resultadoAngulo"></div>
+          </div>
+        </section>
+        <hr class="divisor" />
+        <hr class="divisor" id="divisorPrincipal" />
+        <section class="funcionalidades">
+          <div class="container camposSuperiores">
+            <h2>Primeira Ocorrência Positiva</h2>
+            <input
+              id="ocorrenciaPositivaInput"
+              class="campo"
+              type="text"
+              placeholder="digite um ângulo..."
+              name="ocorrenciaPositiva"
+            />
+            <button class="btn" onclick="mostrarPrimeiraOcorrenciaPositiva()">
+              consultar
+            </button>
+            <div id="resultadoOcorrenciaPositiva"></div>
+          </div>
+          <div class="container">
+            <h2>Configurações</h2>
+            <div class="configs">
+              <label for="modoRadianos">
+                <input type="checkbox" name="modo-radianos" id="modoRadianos" />
+                Radianos
+              </label>
+              <hr />
+              <label for="modoNegativo">
+                <input type="checkbox" name="modo-negativo" id="modoNegativo" />
+                Circunferência Negativa
+              </label>
+              <hr />
+              <label for="modoQuadrantes">
+                <input
+                  type="checkbox"
+                  name="modo-quadrantes"
+                  id="modoQuadrantes"
+                />
+                Quadrantes
+              </label>
+              <hr />
+            </div>
+            <button id="apresentacao" class="btn">modo de apresentação</button>
+          </div>
+        </section>
+        <p style="position: absolute; left: 70%; top: 80%">
+          <strong>OBS:</strong> Colocar o <strong>texto</strong> "Tan" na reta
+          Tangente e deixá-la <strong>visível</strong> em todos os modos.
+        </p>
+      </section>
     </div>
 
     <script src="sketch.js"></script>
-    <script src="src/Funcionalidades.js"></script>
+    <script src="src/funcionalidades.js"></script>
     <script src="src/Circunferencia.js"></script>
     <script src="src/TelaInicial.js"></script>
     <script src="src/VetorLinha.js"></script>

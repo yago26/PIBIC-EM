@@ -11,8 +11,8 @@ class TelaInicial {
 
   mostrar() {
     push();
-    if (this.sobCanvas()) {
-      this.mostrarSetas(7.5);
+    if (this.sobCanvas() || document.getElementById("modoQuadrantes").checked) {
+      this._mostrarSetas(7.5);
       textSize(16);
       strokeWeight(0.8);
 
@@ -51,7 +51,7 @@ class TelaInicial {
       textSize(19);
       strokeWeight(0.8);
 
-      this.mostrarSetas(10);
+      this._mostrarSetas(10);
 
       fill("black");
       stroke("black");
@@ -85,7 +85,7 @@ class TelaInicial {
     pop();
   }
 
-  mostrarSetas(espacamento) {
+  _mostrarSetas(espacamento) {
     push();
     fill("purple");
     stroke("purple");

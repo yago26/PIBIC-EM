@@ -1,3 +1,23 @@
+const radianosConfig = document.getElementById("modoRadianos");
+const negativoConfig = document.getElementById("modoNegativo");
+const quadrantesConfig = document.getElementById("modoQuadrantes");
+
+const btnConfig = document.getElementById("apresentacao");
+btnConfig.addEventListener("click", () => {
+  alert("Funcionalidade ainda não ativa...");
+});
+
+document.querySelectorAll("input").forEach((input) => {
+  input.onfocus = () => {
+    document.body.removeEventListener("keypress", clicarTeclas);
+  };
+  input.onblur = () => {
+    document.body.addEventListener("keypress", clicarTeclas);
+  };
+});
+
+document.body.addEventListener("keypress", clicarTeclas);
+
 let container = document.querySelectorAll(".container");
 
 for (let i = 0; i < container.length; i++) {
@@ -14,11 +34,35 @@ const rad = document.getElementById("radInput");
 const grau = document.getElementById("grauInput");
 
 const converter = () => {
-  if ((rad.value && grau.value) || (!rad.value && !grau.value)) return;
+  if (!rad.value && !grau.value) return;
+  if (rad.value && grau.value) {
+    let valorGraus = degrees(eval(rad.value) * PI).toFixed(2),
+      valorRadianos = radians(eval(grau.value) / PI);
+    Number(valorGraus) === eval(grau.value)
+      ? alert("São correspondentes!")
+      : alert(
+          `Não são correspondentes!\n${rad.value} π rad => ${valorGraus}°\n${grau.value}° => ${valorRadianos} π rad`
+        );
+
+    rad.value = "";
+    grau.value = "";
+    return;
+  }
+
   if (rad.value) {
-    grau.value = `${degrees(eval(rad.value) * PI)}`;
+    alert(
+      `π rad --> 180°\n${rad.value} π rad --> x\nx = ${
+        rad.value
+      }*180\nx = ${degrees(eval(rad.value) * PI).toFixed(2)}°`
+    );
+    grau.value = `${degrees(eval(rad.value) * PI).toFixed(2)}`;
     rad.value = "";
   } else {
+    alert(
+      `π rad --> 180°\nx --> ${grau.value}°\nx = ${
+        grau.value
+      }/180\nx = ${radians(eval(grau.value) / PI)} π rad`
+    );
     rad.value = `${radians(eval(grau.value) / PI)}`;
     grau.value = "";
   }
@@ -62,9 +106,49 @@ const resPOP = document.getElementById("resultadoOcorrenciaPositiva");
 const anguloPOP = document.getElementById("ocorrenciaPositivaInput");
 const mostrarPrimeiraOcorrenciaPositiva = () => {
   if (!anguloPOP.value) return;
-  resPOP.innerHTML = `
-  ${eval(anguloPOP.value)}° => <span class="valores">${
-    eval(anguloPOP.value) % 360
-  }°</span>`;
+  if (Math.sign(eval(anguloPOP.value)) === -1) {
+    let divisao = parseInt(-eval(anguloPOP.value) / 360);
+    alert(
+      `POP = ${eval(anguloPOP.value)}° + 360° * k\nk = Inteiro(${-eval(
+        anguloPOP.value
+      )}° / 360°) + 1\nPOP = ${eval(anguloPOP.value)}° + 360° * ${
+        divisao + 1
+      }\nPOP = ${eval(anguloPOP.value) + 360 * (divisao + 1)}°`
+    );
+    resPOP.innerHTML = `
+    ${eval(anguloPOP.value)}° => <span class="valores">${
+      eval(anguloPOP.value) + 360 * (divisao + 1)
+    }°</span>`;
+  } else {
+    alert(
+      `POP = Resto(${eval(anguloPOP.value)}° / 360°)\nPOP = ${
+        eval(anguloPOP.value) % 360
+      }°`
+    );
+    resPOP.innerHTML = `
+    ${eval(anguloPOP.value)}° => <span class="valores">${
+      eval(anguloPOP.value) % 360
+    }°</span>`;
+  }
   anguloPOP.value = "";
 };
+
+function clicarTeclas(event) {
+  if (event.key === "1") {
+    radianosConfig.checked = !radianosConfig.checked;
+  }
+  if (event.key === "2") {
+    negativoConfig.checked = !negativoConfig.checked;
+  }
+  if (event.key === "3") {
+    quadrantesConfig.checked = !quadrantesConfig.checked;
+  }
+  if (event.key === "f") {
+    btnConfig.click();
+  }
+  if (event.keyCode === 32) {
+    document.getElementById("valores").textContent = "";
+    resAngulo.textContent = "";
+    resPOP.textContent = "";
+  }
+}

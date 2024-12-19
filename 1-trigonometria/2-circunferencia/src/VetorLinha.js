@@ -1,7 +1,8 @@
 class VetorLinha {
   constructor(x, y, raio, cor) {
     this.origem = createVector(x, y);
-    this.sentido;
+    this.sentido = createVector(mouseX - this.origem.x, mouseY - this.origem.y);
+    this.sentido.setMag(this.raio);
     this.raio = raio;
     this.cor = cor;
   }
@@ -36,19 +37,19 @@ class VetorLinha {
       this.origem.x + this.sentido.x,
       this.origem.y
     );
+    stroke("purple");
+    line(width / 2 + this.raio, 0, width / 2 + this.raio, height);
     this.linhaPontilhada(
       this.origem.x,
       this.origem.y + this.sentido.y,
       this.origem.x + this.sentido.x,
-      this.origem.y + this.sentido.y,
-      "gray"
+      this.origem.y + this.sentido.y
     );
     this.linhaPontilhada(
       this.origem.x + this.sentido.x,
       this.origem.y,
       this.origem.x + this.sentido.x,
-      this.origem.y + this.sentido.y,
-      "gray"
+      this.origem.y + this.sentido.y
     );
     pop();
   }
@@ -63,6 +64,19 @@ class VetorLinha {
       this.origem.y + this.sentido.y <= height / 2
         ? Math.round(acos(cosValor))
         : 360 - Math.round(acos(cosValor));
+
+    stroke("orange");
+    strokeWeight(1.5);
+    let y = map(tan(angulo), -2, 2, height, 0);
+    line(
+      width / 2 + this.raio,
+      y,
+      this.origem.x + this.sentido.x,
+      this.origem.y + this.sentido.y
+    );
+
+    stroke(color(0, 255, 0));
+    line(width / 2 + this.raio, y, width / 2 + this.raio, height / 2);
 
     senValor = sin(angulo);
     cosValor = cos(angulo);
@@ -88,11 +102,12 @@ class VetorLinha {
 
     fill("black");
     text(
-      `${angulo}°`,
+      `${
+        document.getElementById("modoNegativo").checked ? -360 + angulo : angulo
+      }°`,
       cos(-angulo) * (this.raio / 3) + width / 2 - this.raio / 10,
       sin(-angulo) * (this.raio / 3) + height / 2 + this.raio / 30
     );
-
     pop();
   }
 
@@ -104,7 +119,7 @@ class VetorLinha {
     pop();
   }
 
-  linhaPontilhada(x1, y1, x2, y2, cor) {
+  linhaPontilhada(x1, y1, x2, y2) {
     push();
     fill("gray");
     stroke("gray");

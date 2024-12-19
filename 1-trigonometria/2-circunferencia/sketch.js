@@ -11,6 +11,5 @@ function draw() {
   circ.mostrarLinhas();
   circ.renderizarTelaInicial();
   circ.mostrarVetorLinha();
-
   circ.mostrarQuadrantes();
 }

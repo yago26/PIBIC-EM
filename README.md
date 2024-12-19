@@ -1,5 +1,6 @@
 <h1 align="center">:computer: Projeto PIBIC-EM</h1>
 <br>
+
 **Tema**: Utilização da Computação Gráfica como ferramenta auxiliar na aprendizagem matemática
 
 ## :memo: Introdução
@@ -23,7 +24,9 @@
 
 ### :adult: Integrantes
 
-> **Discente**: Yago Jordas do Nascimento Pereira<br> > **Orientador**: Antônio Dias dos Santos Júnior<br> > **Coorientador**: Suemilton Nunes Gervázio
+> **Discente**: Yago Jordas do Nascimento Pereira<br>
+> **Orientador**: Antônio Dias dos Santos Júnior<br>
+> **Coorientador**: Suemilton Nunes Gervázio
 
 ### :rocket: Tecnologias
 

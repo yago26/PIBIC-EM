@@ -7,7 +7,6 @@ function setup() {
 
 function draw() {
   background(255);
-  translate(360, 0);
-  func.mostrarLinhas();
   func.mostrar();
+  func.mostrarLinhas();
 }
