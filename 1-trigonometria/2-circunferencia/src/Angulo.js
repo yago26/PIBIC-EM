@@ -7,72 +7,39 @@ class Angulo {
     angleMode(DEGREES);
     this.x = cos(-angulo) * raio + width / 2;
     this.y = sin(-angulo) * raio + height / 2;
-
-    this.posTexto = createVector(
-      angulo === 0
-        ? 10
-        : angulo === 360
-        ? 30
-        : angulo === 90
-        ? 0
-        : angulo === 180
-        ? -30
-        : angulo === 270
-        ? 0
-        : angulo < 90 || (angulo > 270 && angulo < 360)
-        ? 20
-        : -25,
-      angulo === 0 || angulo === 360
-        ? 0
-        : angulo === 90
-        ? -15
-        : angulo === 180
-        ? 0
-        : angulo === 270
-        ? 20
-        : angulo < 90
-        ? -10
-        : angulo < 180
-        ? -10
-        : angulo < 270
-        ? 15
-        : 15
-    );
   }
 
   mostrar() {
     push();
-    if (this.angulo === 0 || this.angulo === 360) {
-      this.posTexto.x =
-        this.angulo === 0 && !document.getElementById("modoNegativo").checked
-          ? 20
-          : this.angulo === 360 &&
-            !document.getElementById("modoNegativo").checked
-          ? 30
-          : this.angulo === 360 &&
-            document.getElementById("modoNegativo").checked
-          ? 20
-          : 30;
-    }
-
     let cor = this.sobMouse() ? "goldenrod" : "black";
     fill(cor);
     stroke(cor);
     circle(this.x, this.y, this.diametro);
 
     textSize(18);
-    textAlign(CENTER, CENTER);
+    if (angulo < 90 || (angulo > 270 && angulo < 360)) {
+      textAlign(LEFT, CENTER);
+    } else if (angulo > 90 && angulo < 270) {
+      textAlign(RIGHT, CENTER);
+    } else {
+      textAlign(CENTER, CENTER);
+    }
+
+    let x = cos(-this.angulo) * ((5 * this.raio) / 4) + width / 2;
+    let y = sin(-this.angulo) * ((5 * this.raio) / 4) + height / 2;
+
+    if (document.getElementById("modoRadianos").checked) {
+      fracRad(radianos[this.angulo], x, y, this.angulo, cor);
+      pop();
+      return;
+    }
 
     text(
-      document.getElementById("modoRadianos").checked
-        ? document.getElementById("modoNegativo").checked
-          ? `-${radianos[-this.angulo + 360]}`
-          : radianos[this.angulo]
-        : document.getElementById("modoNegativo").checked
+      document.getElementById("modoNegativo").checked
         ? `${-360 + this.angulo}°`
         : `${this.angulo}°`,
-      this.x + this.posTexto.x,
-      this.y + this.posTexto.y
+      x,
+      y
     );
     pop();
   }
@@ -98,6 +65,50 @@ class Angulo {
   sobMouse() {
     return dist(mouseX, mouseY, this.x, this.y) <= this.diametro / 2;
   }
+}
+
+function fracRad(texto, x, y, angulo, cor) {
+  push();
+  y = y + ({ 0: "", 180: "", 360: "" }.hasOwnProperty(angulo) ? 0 : 15);
+  textSize(16);
+
+  if (document.getElementById("modoNegativo").checked) {
+    texto = `${radianos[-angulo + 360]}`;
+  }
+
+  const separador = texto.split("/");
+
+  if (separador.length === 1) {
+    if (document.getElementById("modoNegativo").checked) {
+      text(`-${texto}`, x, y);
+    } else {
+      text(texto, x, y);
+    }
+    pop();
+    return;
+  }
+
+  const [numerador, denominador] = separador;
+
+  text(numerador, x, y - 25);
+
+  if (document.getElementById("modoNegativo").checked) {
+    text("-", x - (numerador.length + 1) * 5, y - 15);
+  }
+
+  push();
+  stroke(cor);
+  strokeWeight(2);
+  line(
+    x - (10 * numerador.length) / 2,
+    y - 15,
+    x + (10 * numerador.length) / 2,
+    y - 15
+  );
+  pop();
+
+  text(denominador, x, y);
+  pop();
 }
 
 const angulosValoresContainer = document.createElement("div");

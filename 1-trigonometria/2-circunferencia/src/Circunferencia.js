@@ -1,38 +1,16 @@
 class Circunferencia {
   constructor(raio) {
     this.raio = raio;
-    this.vetorLinha = new VetorLinha(width / 2, height / 2, raio, "orange");
-    this.telaInicial = new TelaInicial(raio * 2);
-    this.quadrantes = [
-      [
-        new Angulo(raio, 0),
-        new Angulo(raio, 30),
-        new Angulo(raio, 45),
-        new Angulo(raio, 60),
-        new Angulo(raio, 90),
-      ],
-      [
-        new Angulo(raio, 90),
-        new Angulo(raio, 120),
-        new Angulo(raio, 135),
-        new Angulo(raio, 150),
-        new Angulo(raio, 180),
-      ],
-      [
-        new Angulo(raio, 180),
-        new Angulo(raio, 210),
-        new Angulo(raio, 225),
-        new Angulo(raio, 240),
-        new Angulo(raio, 270),
-      ],
-      [
-        new Angulo(raio, 270),
-        new Angulo(raio, 300),
-        new Angulo(raio, 315),
-        new Angulo(raio, 330),
-        new Angulo(raio, 360),
-      ],
-    ];
+    this.vetorLinha = new VetorLinha(width / 2, height / 2, raio);
+    this.tela = new Tela(raio);
+    this.quadrantes = [];
+    for (let i = 0; i < 4; i++) {
+      let quadrante = [];
+      for (let j = 0; j <= 90; j += j === 0 || j === 60 ? 30 : 15) {
+        quadrante.push(new Angulo(raio, j + i * 90));
+      }
+      this.quadrantes[i] = quadrante;
+    }
   }
 
   mostrar() {
@@ -42,31 +20,15 @@ class Circunferencia {
     pop();
   }
 
-  mostrarLinhas() {
-    push();
-    stroke("gray");
-    strokeWeight(0.4);
-    for (let i = 0; i <= width; i += this.raio / 2) {
-      line(i, 0, i, height);
-    }
-    for (let i = 0; i <= height; i += this.raio / 2) {
-      line(0, i, width, i);
-    }
-
-    stroke("purple");
-    strokeWeight(0.8);
-    line(width / 2, 27, width / 2, height);
-    line(0, height / 2, width - 44, height / 2);
-    pop();
-  }
-
-  renderizarTelaInicial() {
-    this.telaInicial.mostrar();
+  renderizarTela() {
+    this.tela.mostrarGrades();
+    this.tela.mostrarLinhas();
+    this.tela.mostrarValores();
   }
 
   mostrarVetorLinha() {
     if (
-      this.telaInicial.sobCanvas() &&
+      this.tela.sobCanvas() &&
       !document.getElementById("modoQuadrantes").checked
     ) {
       this.vetorLinha.mostrar();
@@ -100,23 +62,23 @@ class Circunferencia {
       text(
         "+ Sen",
         width / 2 - this.raio / 3,
-        height / 2 - (4 * this.raio) / 6
+        height / 2 - (2 * this.raio) / 3
       );
 
       text(
         "Sen +",
         width / 2 + this.raio / 3,
-        height / 2 - (4 * this.raio) / 6
+        height / 2 - (2 * this.raio) / 3
       );
       text(
         "Cos +",
         width / 2 + this.raio / 3,
-        height / 2 - (4 * this.raio) / 6 + espacamento
+        height / 2 - (2 * this.raio) / 3 + espacamento
       );
       text(
         "Tan +",
         width / 2 + this.raio / 3,
-        height / 2 - (4 * this.raio) / 6 + espacamento * 2
+        height / 2 - (2 * this.raio) / 3 + espacamento * 2
       );
 
       text(
@@ -138,12 +100,12 @@ class Circunferencia {
       text(
         "- Cos",
         width / 2 - this.raio / 3,
-        height / 2 - (4 * this.raio) / 6 + espacamento
+        height / 2 - (2 * this.raio) / 3 + espacamento
       );
       text(
         "- Tan",
         width / 2 - this.raio / 3,
-        height / 2 - (4 * this.raio) / 6 + espacamento * 2
+        height / 2 - (2 * this.raio) / 3 + espacamento * 2
       );
 
       text("- Sen", width / 2 - this.raio / 3, height / 2 + this.raio / 8);
@@ -179,7 +141,7 @@ class Circunferencia {
       return;
     }
 
-    if (!this.telaInicial.sobCanvas()) return;
+    if (!this.tela.sobCanvas()) return;
 
     if (mouseX >= width / 2 && mouseX < width && mouseY <= height / 2) {
       for (let angulo of this.quadrantes[0]) {

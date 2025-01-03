@@ -83,23 +83,3 @@ class Matriz {
     return this.valores;
   }
 }
-
-const A = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-];
-const B = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-];
-console.log(A, B);
-console.log(compararTipos(A, B));
-console.log(somar(A, B));
-console.log(subtrair(A, B));
-console.log(multiplicar(A, B));
-console.log(elevar(A, 0));
-console.log(transpor(A));
-console.log(transpor(transpor(A)));
-console.log(multiplicar(A, transpor(A)));

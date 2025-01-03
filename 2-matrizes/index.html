@@ -12,8 +12,8 @@
       type="image/x-icon"
     />
 
-    <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" type="text/css" href="../style.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
     <script src="../libraries/p5.min.js"></script>
     <script src="../libraries/p5.sound.min.js"></script>
@@ -25,7 +25,20 @@
       Matrizes
     </h1>
     <hr />
+    <div id="agrupador">
+      <section id="geradorMatriz">
+        <span>
+          Dimensões da matriz:
+          <input id="inputLinha" type="number" name="linha" min="1" />
+          x
+          <input id="inputColuna" type="number" name="coluna" min="1" />
+          <button class="btn" onclick="criarMatriz()">Confirmar</button>
+        </span>
+        <div class="matriz"></div>
+      </section>
+    </div>
     <script src="sketch.js"></script>
     <script src="src/Matriz.js"></script>
+    <script src="src/funcionalidades.js"></script>
   </body>
 </html>

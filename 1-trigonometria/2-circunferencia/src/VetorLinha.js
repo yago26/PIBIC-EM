@@ -1,20 +1,19 @@
 class VetorLinha {
-  constructor(x, y, raio, cor) {
+  constructor(x, y, raio) {
     this.origem = createVector(x, y);
     this.sentido = createVector(mouseX - this.origem.x, mouseY - this.origem.y);
     this.sentido.setMag(this.raio);
     this.raio = raio;
-    this.cor = cor;
   }
 
   mostrar() {
     push();
-    fill(this.cor);
+    fill("orange");
 
     this.sentido = createVector(mouseX - this.origem.x, mouseY - this.origem.y);
     this.sentido.setMag(this.raio);
 
-    stroke(this.cor);
+    stroke("orange");
     strokeWeight(1.8);
 
     line(
@@ -37,15 +36,14 @@ class VetorLinha {
       this.origem.x + this.sentido.x,
       this.origem.y
     );
-    stroke("purple");
-    line(width / 2 + this.raio, 0, width / 2 + this.raio, height);
-    this.linhaPontilhada(
+
+    this._linhaPontilhada(
       this.origem.x,
       this.origem.y + this.sentido.y,
       this.origem.x + this.sentido.x,
       this.origem.y + this.sentido.y
     );
-    this.linhaPontilhada(
+    this._linhaPontilhada(
       this.origem.x + this.sentido.x,
       this.origem.y,
       this.origem.x + this.sentido.x,
@@ -67,7 +65,13 @@ class VetorLinha {
 
     stroke("orange");
     strokeWeight(1.5);
-    let y = map(tan(angulo), -2, 2, height, 0);
+    let y = map(
+      tan(angulo),
+      -2,
+      2,
+      height / 2 + this.raio * 2,
+      height / 2 - this.raio * 2
+    );
     line(
       width / 2 + this.raio,
       y,
@@ -75,38 +79,43 @@ class VetorLinha {
       this.origem.y + this.sentido.y
     );
 
-    stroke(color(0, 255, 0));
-    line(width / 2 + this.raio, y, width / 2 + this.raio, height / 2);
-
     senValor = sin(angulo);
     cosValor = cos(angulo);
 
     stroke("green");
+    line(width / 2 + this.raio, y, width / 2 + this.raio, height / 2);
     fill(color(200, 255, 215, 70));
     arc(width / 2, height / 2, 30, 30, -angulo, 0);
 
     noStroke();
 
     fill("red");
-    text(`sen: ${senValor.toFixed(4)}`, 40, 50);
+    text(`sen: ${senValor.toFixed(4)}`, width / 8, height / 7);
     fill("blue");
-    text(`cos: ${cosValor.toFixed(4)}`, 40, 65);
+    text(`cos: ${cosValor.toFixed(4)}`, width / 8, height / 6 + 2);
     fill("green");
     text(
       `tan: ${
         angulo === 90 || angulo === 270 ? "∄" : (senValor / cosValor).toFixed(4)
       }`,
-      40,
-      80
+      width / 8,
+      height / 5
     );
 
+    if (angulo < 90 || (angulo > 270 && angulo < 360)) {
+      textAlign(LEFT, CENTER);
+    } else if (angulo > 90 && angulo < 270) {
+      textAlign(RIGHT, CENTER);
+    } else {
+      textAlign(CENTER, CENTER);
+    }
     fill("black");
     text(
       `${
         document.getElementById("modoNegativo").checked ? -360 + angulo : angulo
       }°`,
-      cos(-angulo) * (this.raio / 3) + width / 2 - this.raio / 10,
-      sin(-angulo) * (this.raio / 3) + height / 2 + this.raio / 30
+      cos(-angulo) * 20 + width / 2,
+      sin(-angulo) * 20 + height / 2
     );
     pop();
   }
@@ -119,7 +128,7 @@ class VetorLinha {
     pop();
   }
 
-  linhaPontilhada(x1, y1, x2, y2) {
+  _linhaPontilhada(x1, y1, x2, y2) {
     push();
     fill("gray");
     stroke("gray");

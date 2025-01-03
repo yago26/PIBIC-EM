@@ -12,8 +12,8 @@
       type="image/x-icon"
     />
 
-    <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" type="text/css" href="../../style.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
     <script src="../../libraries/p5.min.js"></script>
     <script src="../../libraries/p5.sound.min.js"></script>
@@ -25,8 +25,86 @@
       Funções Trigonométricas
     </h1>
     <hr />
+    <div id="agrupador">
+      <section id="configs">
+        <div id="coeficientes">
+          <h2>Coeficientes</h2>
+          <p>
+            <span style="font-weight: bold"> f(x) = </span>
+            <label for="coeficienteA">
+              <input
+                id="coeficienteA"
+                type="number"
+                name="coeficiente-a"
+                placeholder="1"
+                value="1"
+              />
+            </label>
+            .RT(
+            <label for="coeficienteB">
+              <input
+                id="coeficienteB"
+                type="number"
+                name="coeficiente-b"
+                placeholder="1"
+                value="1"
+              />
+            </label>
+            .x +
+            <label for="coeficienteC">
+              <input
+                id="coeficienteC"
+                type="number"
+                name="coeficiente-c"
+                placeholder="0"
+                value="0"
+              />
+            </label>
+            ) +
+            <label for="coeficienteD">
+              <input
+                id="coeficienteD"
+                type="number"
+                name="coeficiente-d"
+                placeholder="0"
+                value="0"
+              />
+            </label>
+          </p>
+        </div>
+
+        <div id="funcoes">
+          <h2>Funções</h2>
+          <label for="funcSen">
+            <input id="funcSen" type="checkbox" name="seno" />
+            <span style="color: red">Função Seno</span>
+          </label>
+          <label for="funcCos">
+            <input id="funcCos" type="checkbox" name="cosseno" />
+            <span style="color: blue">Função Cosseno</span>
+          </label>
+          <label for="funcTan">
+            <input id="funcTan" type="checkbox" name="tangente" />
+            <span style="color: green">Função Tangente</span>
+          </label>
+        </div>
+
+        <div>
+          <h2>Zoom</h2>
+          <input
+            id="zoom"
+            type="number"
+            name="zoom"
+            placeholder="0"
+            value="0"
+          />
+        </div>
+      </section>
+    </div>
 
     <script src="sketch.js"></script>
     <script src="src/FuncTrigonometrica.js"></script>
+    <script src="src/funcionalidades.js"></script>
+    <script src="src/Tela.js"></script>
   </body>
 </html>

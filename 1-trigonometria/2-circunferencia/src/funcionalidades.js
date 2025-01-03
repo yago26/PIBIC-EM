@@ -9,14 +9,14 @@ btnConfig.addEventListener("click", () => {
 
 document.querySelectorAll("input").forEach((input) => {
   input.onfocus = () => {
-    document.body.removeEventListener("keypress", clicarTeclas);
+    document.body.removeEventListener("keypress", pressionandoTeclas);
   };
   input.onblur = () => {
-    document.body.addEventListener("keypress", clicarTeclas);
+    document.body.addEventListener("keypress", pressionandoTeclas);
   };
 });
 
-document.body.addEventListener("keypress", clicarTeclas);
+document.body.addEventListener("keypress", pressionandoTeclas);
 
 let container = document.querySelectorAll(".container");
 
@@ -28,6 +28,26 @@ for (let i = 0; i < container.length; i++) {
       }
     });
   });
+}
+
+function pressionandoTeclas(event) {
+  if (event.key === "1") {
+    radianosConfig.checked = !radianosConfig.checked;
+  }
+  if (event.key === "2") {
+    negativoConfig.checked = !negativoConfig.checked;
+  }
+  if (event.key === "3") {
+    quadrantesConfig.checked = !quadrantesConfig.checked;
+  }
+  if (event.key === "f") {
+    btnConfig.click();
+  }
+  if (event.keyCode === 32) {
+    document.getElementById("valores").textContent = "";
+    resAngulo.textContent = "";
+    resPOP.textContent = "";
+  }
 }
 
 const rad = document.getElementById("radInput");
@@ -132,23 +152,3 @@ const mostrarPrimeiraOcorrenciaPositiva = () => {
   }
   anguloPOP.value = "";
 };
-
-function clicarTeclas(event) {
-  if (event.key === "1") {
-    radianosConfig.checked = !radianosConfig.checked;
-  }
-  if (event.key === "2") {
-    negativoConfig.checked = !negativoConfig.checked;
-  }
-  if (event.key === "3") {
-    quadrantesConfig.checked = !quadrantesConfig.checked;
-  }
-  if (event.key === "f") {
-    btnConfig.click();
-  }
-  if (event.keyCode === 32) {
-    document.getElementById("valores").textContent = "";
-    resAngulo.textContent = "";
-    resPOP.textContent = "";
-  }
-}

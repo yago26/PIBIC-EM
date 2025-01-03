@@ -1,12 +1,14 @@
 let func;
+let tamanho = 360;
+let espacamento = 50;
 
 function setup() {
-  createCanvas(1080, 360);
+  createCanvas(tamanho * 4, tamanho);
   func = new FuncTrigonometrica();
 }
 
 function draw() {
   background(255);
   func.mostrar();
-  func.mostrarLinhas();
+  func.mostrarValores();
 }
