@@ -151,21 +151,65 @@ class FuncTrigonometrica {
     noFill();
     stroke("green");
     strokeWeight(2);
-    let y, radiano;
+    let y, xRad;
+    let curva = [];
+
+    let limEsq = -width / 2;
+    let limDir = width / 2;
+    // let limEsq = -width / 2;
+    // let limDir = limEsq + 2 * tamGrid;
+
+    let limRadEsq = this.inicio;
+    let limRadDir = this.final;
+    let step = HALF_PI;
+    // print("inicio", limRadEsq, "fim", limRadDir);
+
+    // Cria uma lista de pontos onde o valor da tangente
+    // é indeterminado. No intervalo de -TWO_PI até TWO_PI,
+    // por exemplo, esses pontos são -1.5PI, -0.5PI, 0.5PI
+    // e 1.5PI.
+    // Os valores guardados na lista são em radianos.
+    let pontosIndeterminacao = [];
+    for (let i = limRadEsq + step; i <= limRadDir; i += PI) {
+      pontosIndeterminacao.push(i);
+    }
+
+    // Aqui vamos montar a curva, para depois plotar como vértices
+    for (let x = limEsq; x <= limDir; x++) {
+      xRad = map(x, limEsq, limDir, limRadEsq, limRadDir);
+
+      y = map(this.a * tan(this.b * xRad + this.c) + this.d, -2, 2, height, 0);
+
+      // Se o valor de x (em radianos) é um dos pontos de
+      // indeterminação, então atribua Infinity a y. Isso
+      // serve para marcar pontos que não devem ser plotados.
+      // A função _compareFloat(), definida abaixo dessa, foi
+      // usada porque ocorreria um problema de precisão, se
+      // fôssemos comparar v e xRad com v == xRad.
+      if (pontosIndeterminacao.find((v) => this._compareFloat(v, xRad, 1e-1))) {
+        curva.push({ x, Infinity });
+      } else {
+        curva.push({ x, y });
+      }
+    }
+    curva.pop();
+
     beginShape();
-    for (let x = -width / 2; x <= width / 2; x++) {
-      radiano = map(x, -width / 2, width / 2, this.inicio, this.final);
-      y = map(
-        this.a * tan(this.b * radiano + this.c) + this.d,
-        -2,
-        2,
-        height,
-        0
-      );
-      vertex(x, y);
+    for (let ponto of curva) {
+      // Se o y do ponto for Infinity, então ele não deve ser
+      // plotado. Assim, finalize a forma e inicie novamente.
+      if (!isFinite(ponto.y)) {
+        endShape();
+        beginShape();
+      }
+      vertex(ponto.x, ponto.y);
     }
     endShape();
     pop();
+  }
+
+  _compareFloat(v1, v2, prec) {
+    return Math.abs(v1 - v2) <= prec;
   }
 
   _ajustarDimensoesCanvas() {
