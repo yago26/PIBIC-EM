@@ -8,7 +8,6 @@ function draw() {
   background(255);
 
   circ.mostrar();
-  circ.renderizarTela();
   circ.mostrarVetorLinha();
   circ.mostrarQuadrantes();
 }

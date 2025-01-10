@@ -32,16 +32,6 @@
       <aside class="funcionalidades">
         <div class="container">
           <h2>Conversor</h2>
-          <label for="radInput">
-            π Radiano(s):
-            <input
-              id="radInput"
-              class="campo"
-              type="text"
-              name="rad"
-              placeholder="Ex.: 2"
-            />
-          </label>
           <label for="grauInput">
             Grau(s):
             <input
@@ -52,10 +42,20 @@
               placeholder="Ex.: 360"
             />
           </label>
+          <label for="radInput">
+            π Radiano(s):
+            <input
+              id="radInput"
+              class="campo"
+              type="text"
+              name="rad"
+              placeholder="Ex.: 2"
+            />
+          </label>
           <button class="btn" onclick="converter()">converter</button>
         </div>
         <div class="container">
-          <h2>Ângulos</h2>
+          <h2>Consultor de Valores</h2>
           <input
             id="anguloInput"
             class="campo"
@@ -64,13 +64,13 @@
             placeholder="digite um ângulo..."
           />
           <button class="btn" onclick="mostrarValoresDoAngulo()">
-            consultar valores
+            consultar
           </button>
           <div id="resultadoAngulo"></div>
         </div>
       </aside>
       <hr class="divisor" />
-      <hr class="divisor" id="divisorPrincipal" />
+      <hr id="divisorPrincipal" class="divisor" />
       <aside class="funcionalidades">
         <div class="container">
           <h2>Primeira Ocorrência Positiva</h2>

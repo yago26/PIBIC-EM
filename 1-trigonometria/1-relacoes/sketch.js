@@ -5,6 +5,6 @@ function setup() {
 }
 
 function draw() {
-  background(245);
+  background(255);
   triRet.mostrar();
 }

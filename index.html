@@ -15,11 +15,29 @@
     <link rel="stylesheet" href="style.css" />
     <style>
       body {
-        padding-inline: 15%;
+        background-color: rgb(230, 230, 230);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 95vh;
+      }
+
+      body > div {
+        width: 40%;
+        padding: 50px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 25px;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 40px;
       }
 
       h1 {
         color: rgb(71, 86, 158);
+        margin: 0;
+        padding: 0;
       }
 
       p.description {
@@ -66,55 +84,65 @@
   </head>
 
   <body>
-    <h1>PIBIC-EM</h1>
-    <hr />
-    <p>
-      Tema: Utilização da Computação Gráfica como ferramenta auxiliar na
-      aprendizagem matemática
-    </p>
-    <h2>Bem-vindo ao menu!</h2>
-    <p class="description">
-      A partir da Computação Gráfica, procuramos auxiliar na aprendizagem da
-      matemática. Para tanto, faremos uso de recursos visuais para otimizar e
-      facilitar o entendimento dos estudantes quanto ao universo vasto que
-      envolve a matemática.
-      <span style="color: rgb(65, 245, 135); font-weight: bold"
-        >Bons estudos!</span
-      >
-      📚✍
-    </p>
-    <h3>Nossos conteúdos:</h3>
-    <ol>
-      <li class="content">
-        Trigonometria
+    <div>
+      <header>
+        <h1>PIBIC-EM</h1>
+        <hr />
+        <p style="color: gray">
+          Tema: Utilização da Computação Gráfica como ferramenta auxiliar na
+          aprendizagem matemática
+        </p>
+      </header>
+      
+      <aside>
+        <h3>Bem-vindo ao menu!</h2>
+        <p class="description">
+          A partir da Computação Gráfica, procuramos auxiliar na aprendizagem da
+          matemática. Para tanto, faremos uso de recursos visuais para otimizar e
+          facilitar o entendimento dos estudantes quanto ao vasto universo que
+          envolve a matemática.
+          <span style="color: rgb(65, 245, 135); font-weight: bold; box-shadow: 3px 3px 3px 3px;"
+            >Bons estudos!</span
+          >
+          📚✍
+        </p>
+      </aside>
+      <article>
+        <h2>Nossos conteúdos:</h3>
+        2º ano EM
         <ol>
-          <li>
-            <a href="1-trigonometria/1-relacoes/index.html"
-              >Relações Trigonométricas</a
-            >
+          <li class="content">
+            Trigonometria
+            <ol>
+              <li>
+                <a href="1-trigonometria/1-relacoes/index.html"
+                  >Relações Trigonométricas</a
+                >
+              </li>
+              <li>
+                <a href="1-trigonometria/2-circunferencia/index.html"
+                  >Circunferência Trigonométrica</a
+                >
+              </li>
+              <li>
+                <a href="1-trigonometria/3-funcoes/index.html"
+                  >Funções Trigonométricas</a
+                >
+              </li>
+            </ol>
           </li>
-          <li>
-            <a href="1-trigonometria/2-circunferencia/index.html"
-              >Circunferência Trigonométrica</a
-            >
-          </li>
-          <li>
-            <a href="1-trigonometria/3-funcoes/index.html"
-              >Funções Trigonométricas</a
-            >
+          <li class="content"><a href="2-matrizes/index.html">Matrizes</a></li>
+          <li class="content">
+            Geometria
+            <ol>
+              <li><a href="3-geometria/1-plana/index.html">Geometria Plana</a></li>
+              <li>
+                <a href="3-geometria/2-espacial/index.html">Geometria Espacial</a>
+              </li>
+            </ol>
           </li>
         </ol>
-      </li>
-      <li class="content"><a href="2-matrizes/index.html">Matrizes</a></li>
-      <li class="content">
-        Geometria
-        <ol>
-          <li><a href="3-geometria/1-plana/index.html">Geometria Plana</a></li>
-          <li>
-            <a href="3-geometria/2-espacial/index.html">Geometria Espacial</a>
-          </li>
-        </ol>
-      </li>
-    </ol>
+      </article>
+    </div>
   </body>
 </html>

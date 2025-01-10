@@ -20,11 +20,14 @@
   </head>
 
   <body>
-    <h1 class="titulo">
-      <span id="voltar"><a href="../../index.html">PIBIC-EM</a></span> &gt;
-      Funções Trigonométricas
-    </h1>
-    <hr />
+    <header>
+      <h1 class="titulo">
+        <span id="voltar"><a href="../../index.html">PIBIC-EM</a></span> &gt;
+        Funções Trigonométricas
+      </h1>
+      <hr />
+    </header>
+
     <div id="agrupador">
       <section id="configs">
         <div id="coeficientes">
@@ -34,40 +37,56 @@
             <label for="coeficienteA">
               <input
                 id="coeficienteA"
+                class="coeficientes"
                 type="number"
                 name="coeficiente-a"
                 placeholder="1"
                 value="1"
+                min="-16"
+                max="16"
+                step="1"
               />
             </label>
             .RT(
             <label for="coeficienteB">
               <input
                 id="coeficienteB"
+                class="coeficientes"
                 type="number"
                 name="coeficiente-b"
                 placeholder="1"
                 value="1"
+                min="-50"
+                max="50"
+                step="1"
               />
             </label>
             .x +
             <label for="coeficienteC">
               <input
                 id="coeficienteC"
+                class="coeficientes"
                 type="number"
                 name="coeficiente-c"
                 placeholder="0"
                 value="0"
+                min="-100"
+                max="100"
+                step="1"
               />
             </label>
             ) +
             <label for="coeficienteD">
               <input
                 id="coeficienteD"
+                class="coeficientes"
                 type="number"
                 name="coeficiente-d"
                 placeholder="0"
                 value="0"
+                min="-16"
+                max="16"
+                step="1"
               />
             </label>
           </p>
@@ -89,17 +108,13 @@
           </label>
         </div>
 
-        <div>
+        <div id="zoom">
           <h2>Zoom</h2>
-          <input
-            id="zoom"
-            type="number"
-            name="zoom"
-            placeholder="0"
-            value="0"
-          />
+          <button id="ampliar" class="btn">+</button>
+          <button id="reduzir" class="btn">-</button>
         </div>
       </section>
+      <p><strong>OBS.:</strong> Função Tangente e Dados/Espaçamento</p>
     </div>
 
     <script src="sketch.js"></script>

@@ -15,15 +15,15 @@ class Circunferencia {
 
   mostrar() {
     push();
+    this.tela.mostrarGrades();
+
+    noFill();
     stroke("black");
     circle(width / 2, height / 2, this.raio * 2);
-    pop();
-  }
 
-  renderizarTela() {
-    this.tela.mostrarGrades();
     this.tela.mostrarLinhas();
     this.tela.mostrarValores();
+    pop();
   }
 
   mostrarVetorLinha() {

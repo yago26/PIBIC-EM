@@ -1,9 +1,9 @@
 let func;
-let tamanho = 360;
-let espacamento = 50;
+const tam = 360;
+const margem = 50;
 
 function setup() {
-  createCanvas(tamanho * 4, tamanho);
+  createCanvas(tam * 4, tam);
   func = new FuncTrigonometrica();
 }
 

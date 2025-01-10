@@ -44,7 +44,7 @@ function pressionandoTeclas(event) {
     btnConfig.click();
   }
   if (event.keyCode === 32) {
-    document.getElementById("valores").textContent = "";
+    document.getElementById("valoresRT").textContent = "";
     resAngulo.textContent = "";
     resPOP.textContent = "";
   }

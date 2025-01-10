@@ -14,7 +14,7 @@ class VetorLinha {
     this.sentido.setMag(this.raio);
 
     stroke("orange");
-    strokeWeight(1.8);
+    strokeWeight(1.5);
 
     line(
       this.origem.x,
@@ -27,6 +27,7 @@ class VetorLinha {
 
   mostrarLinhas() {
     push();
+    strokeWeight(2.5);
     stroke("red");
     line(width / 2, this.origem.y + this.sentido.y, width / 2, height / 2);
     stroke("blue");
@@ -37,6 +38,7 @@ class VetorLinha {
       this.origem.y
     );
 
+    strokeWeight(1);
     this._linhaPontilhada(
       this.origem.x,
       this.origem.y + this.sentido.y,
@@ -54,7 +56,6 @@ class VetorLinha {
 
   mostrarAngulo() {
     push();
-    fill("black");
     let senValor = -(this.origem.y + this.sentido.y - height / 2) / this.raio;
     let cosValor = (this.origem.x + this.sentido.x - width / 2) / this.raio;
 
@@ -63,8 +64,6 @@ class VetorLinha {
         ? Math.round(acos(cosValor))
         : 360 - Math.round(acos(cosValor));
 
-    stroke("orange");
-    strokeWeight(1.5);
     let y = map(
       tan(angulo),
       -2,
@@ -72,6 +71,9 @@ class VetorLinha {
       height / 2 + this.raio * 2,
       height / 2 - this.raio * 2
     );
+
+    stroke("orange");
+    strokeWeight(1.5);
     line(
       width / 2 + this.raio,
       y,
@@ -79,13 +81,17 @@ class VetorLinha {
       this.origem.y + this.sentido.y
     );
 
+    stroke("green");
+    strokeWeight(2.5);
+    line(width / 2 + this.raio, y, width / 2 + this.raio, height / 2);
+
+    stroke("cyan");
+    strokeWeight(1.5);
+    fill(color(0, 255, 255, 50));
+    arc(width / 2, height / 2, 30, 30, -angulo, 0);
+
     senValor = sin(angulo);
     cosValor = cos(angulo);
-
-    stroke("green");
-    line(width / 2 + this.raio, y, width / 2 + this.raio, height / 2);
-    fill(color(200, 255, 215, 70));
-    arc(width / 2, height / 2, 30, 30, -angulo, 0);
 
     noStroke();
 
@@ -102,20 +108,18 @@ class VetorLinha {
       height / 5
     );
 
-    if (angulo < 90 || (angulo > 270 && angulo < 360)) {
-      textAlign(LEFT, CENTER);
-    } else if (angulo > 90 && angulo < 270) {
-      textAlign(RIGHT, CENTER);
-    } else {
-      textAlign(CENTER, CENTER);
-    }
+    textAlign(CENTER, CENTER);
+
     fill("black");
+    stroke("black");
+    strokeWeight(0.75);
+
     text(
       `${
         document.getElementById("modoNegativo").checked ? -360 + angulo : angulo
       }°`,
-      cos(-angulo) * 20 + width / 2,
-      sin(-angulo) * 20 + height / 2
+      cos(-angulo / 2) * 30 + width / 2,
+      sin(-angulo / 2) * 30 + height / 2
     );
     pop();
   }
@@ -139,7 +143,7 @@ class VetorLinha {
     let dx = (x2 - x1) / numPontos;
     let dy = (y2 - y1) / numPontos;
 
-    for (let i = 0; i <= numPontos; i++) {
+    for (let i = 1; i <= numPontos; i++) {
       let x = x1 + dx * i;
       let y = y1 + dy * i;
       circle(x, y, 2);

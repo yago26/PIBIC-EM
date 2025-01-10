@@ -49,13 +49,23 @@ class Angulo {
       this.cor = "blue";
 
       valores.innerHTML = `
-      <span class="senValor valores">Sen:</span> ${angulos[this.angulo].seno}
-      <br><span class="cosValor valores">Cos:</span> ${
-        angulos[this.angulo].cosseno
-      }
-      <br><span class="tanValor valores">Tan:</span> ${
-        angulos[this.angulo].tangente
-      }
+      <span class="divisorValor">
+        <span class="valores" style="color: red;">Sen:</span> 
+        <span class="fracRT">
+          ${angulos[this.angulo].seno}
+        </span>
+      </span>
+      <span class="divisorValor">
+        <span class="valores" style="color: blue;">Cos:</span> 
+        <span class="fracRT">
+          ${angulos[this.angulo].cosseno}
+        </span></span>
+      <span class="divisorValor">
+        <span class="valores" style="color: green;">Tan:</span> 
+        <span class="fracRT">
+          ${angulos[this.angulo].tangente}
+        </span>
+      </span>
       `;
 
       document.querySelector("main").appendChild(angulosValoresContainer);
@@ -114,7 +124,7 @@ function fracRad(texto, x, y, angulo, cor) {
 const angulosValoresContainer = document.createElement("div");
 
 const valores = document.createElement("p");
-valores.id = "valores";
+valores.id = "valoresRT";
 angulosValoresContainer.appendChild(valores);
 
 const tabelaTrigonometrica = {

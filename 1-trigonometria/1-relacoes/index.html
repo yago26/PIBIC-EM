@@ -20,132 +20,184 @@
   </head>
 
   <body>
-    <h1 class="titulo">
-      <span id="voltar"><a href="../../index.html">PIBIC-EM</a></span> &gt;
-      Relações Trigonométricas
-    </h1>
-    <hr />
+    <header>
+      <h1 class="titulo">
+        <span id="voltar"><a href="../../index.html">PIBIC-EM</a></span> &gt;
+        Relações Trigonométricas
+      </h1>
+      <hr />
+    </header>
 
     <div id="agrupador">
-      <table border="2px" style="text-align: center">
-        <thead>
-          <th></th>
-          <th>30°</th>
-          <th>45°</th>
-          <th>60°</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Sen</td>
-            <td>
-              <math
-                ><mfrac
-                  ><mrow><mn>1</mn></mrow
-                  ><mn>2</mn></mfrac
-                ></math
-              >
-            </td>
-            <td>
-              <math
-                ><mfrac
-                  ><mrow><mn>&radic;2</mn></mrow
-                  ><mn>2</mn></mfrac
-                ></math
-              >
-            </td>
-            <td>
-              <math
-                ><mfrac
-                  ><mrow><mn>&radic;3</mn></mrow
-                  ><mn>2</mn></mfrac
-                ></math
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>Cos</td>
-            <td>
-              <math
-                ><mfrac
-                  ><mrow><mn>&radic;3</mn></mrow
-                  ><mn>2</mn></mfrac
-                ></math
-              >
-            </td>
-            <td>
-              <math
-                ><mfrac
-                  ><mrow><mn>&radic;2</mn></mrow
-                  ><mn>2</mn></mfrac
-                ></math
-              >
-            </td>
-            <td>
-              <math
-                ><mfrac
-                  ><mrow><mn>1</mn></mrow
-                  ><mn>2</mn></mfrac
-                ></math
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>Tan</td>
-            <td>
-              <math
-                ><mfrac
-                  ><mrow><mn>&radic;3</mn></mrow
-                  ><mn>3</mn></mfrac
-                ></math
-              >
-            </td>
-            <td>1</td>
-            <td>
-              <math><mn>&radic;3</mn></math>
-            </td>
-          </tr>
-        </tbody>
-        <tfoot></tfoot>
-      </table>
-      <div class="container">
-        <h2>Ângulos</h2>
-        <div class="separador">
-          <input
-            id="catetoA"
-            type="range"
-            onchange="catetoB.value = 90 - value; displayA.value = value; displayB.value = 90 - value"
-            min="30"
-            max="60"
-            step="15"
-          />
-          <input
-            type="number"
-            id="displayA"
-            value="45"
-            onchange="if (value > 60) {value = 60} if (value < 30) {value = 30} if (!(value % 15 === 0)) {return} catetoA.value = value; catetoB.value = 90 - value; displayB.value = 90 - value"
-          />
+      <section id="funcionalidades">
+        <div id="valoresLados" class="container">
+          <h2>Lados</h2>
+          <div class="separador">
+            <label for="ladoB">
+              <span style="color: blue; font-weight: bold">Base:</span>
+              <input id="ladoB" class="valorLado" type="text" name="b" />
+            </label>
+          </div>
+          <hr />
+          <div class="separador">
+            <label for="ladoC">
+              <span style="color: red; font-weight: bold">Altura:</span>
+              <input id="ladoC" class="valorLado" type="text" name="c" />
+            </label>
+          </div>
+          <hr />
+          <div class="separador">
+            <label for="ladoA">
+              <span style="color: green; font-weight: bold">Hipotenusa:</span>
+              <input id="ladoA" class="valorLado" type="text" name="a" />
+            </label>
+          </div>
         </div>
-        <div class="separador">
-          <input
-            id="catetoB"
-            type="range"
-            onchange="catetoA.value = 90 - value; displayA.value = 90 - value; displayB.value = value"
-            min="30"
-            max="60"
-            step="15"
-          />
-          <input
-            type="number"
-            id="displayB"
-            value="45"
-            onchange="if (value > 60) {value = 60} if (value < 30) {value = 30} if (!(value % 15 === 0)) {return} catetoA.value = 90 - value; catetoB.value = value; displayA.value = 90 - value"
-          />
+
+        <div id="angulos" class="container">
+          <h2>Ângulos</h2>
+          <div class="separador">
+            <label for="valorAnguloAlphaRange">
+              <span style="color: cyan; font-weight: bold">α</span>
+              <input
+                id="valorAnguloAlphaRange"
+                class="valorAnguloRange"
+                type="range"
+                value="45"
+                min="1"
+                max="89"
+                step="1"
+              />
+            </label>
+            <input
+              id="valorAnguloAlphaNumber"
+              class="valorAnguloNumber"
+              type="number"
+              value="45"
+              min="1"
+              max="89"
+              step="1"
+            />
+          </div>
+          <div class="separador">
+            <label for="valorAnguloBetaRange">
+              <span style="color: purple; font-weight: bold">β</span>
+              <input
+                id="valorAnguloBetaRange"
+                class="valorAnguloRange"
+                type="range"
+                value="45"
+                min="1"
+                max="89"
+                step="1"
+              />
+            </label>
+            <input
+              id="valorAnguloBetaNumber"
+              class="valorAnguloNumber"
+              type="number"
+              value="45"
+              min="1"
+              max="89"
+              step="1"
+            />
+          </div>
         </div>
-      </div>
+      </section>
+
+      <hr class="divisor" />
+      <hr id="divisorPrincipal" class="divisor" />
+
+      <section id="tabelaTrigonometrica" class="container">
+        <h2>Tabela Trigonométrica</h2>
+        <div id="divTabela">
+          <table id="tabela">
+            <thead>
+              <th></th>
+              <th>30°</th>
+              <th>45°</th>
+              <th>60°</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sen</td>
+                <td class="valorTabela">
+                  <math
+                    ><mfrac
+                      ><mrow><mn>1</mn></mrow
+                      ><mn>2</mn></mfrac
+                    ></math
+                  >
+                </td>
+                <td class="valorTabela">
+                  <math
+                    ><mfrac
+                      ><mrow><mn>&radic;2</mn></mrow
+                      ><mn>2</mn></mfrac
+                    ></math
+                  >
+                </td>
+                <td class="valorTabela">
+                  <math
+                    ><mfrac
+                      ><mrow><mn>&radic;3</mn></mrow
+                      ><mn>2</mn></mfrac
+                    ></math
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Cos</td>
+                <td class="valorTabela">
+                  <math
+                    ><mfrac
+                      ><mrow><mn>&radic;3</mn></mrow
+                      ><mn>2</mn></mfrac
+                    ></math
+                  >
+                </td>
+                <td class="valorTabela">
+                  <math
+                    ><mfrac
+                      ><mrow><mn>&radic;2</mn></mrow
+                      ><mn>2</mn></mfrac
+                    ></math
+                  >
+                </td>
+                <td class="valorTabela">
+                  <math
+                    ><mfrac
+                      ><mrow><mn>1</mn></mrow
+                      ><mn>2</mn></mfrac
+                    ></math
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Tan</td>
+                <td class="valorTabela">
+                  <math
+                    ><mfrac
+                      ><mrow><mn>&radic;3</mn></mrow
+                      ><mn>3</mn></mfrac
+                    ></math
+                  >
+                </td>
+                <td class="valorTabela">1</td>
+                <td class="valorTabela">
+                  <math><mn>&radic;3</mn></math>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot></tfoot>
+          </table>
+        </div>
+      </section>
     </div>
 
     <script src="sketch.js"></script>
     <script src="src/TrianguloRetangulo.js"></script>
+    <script src="src/Tela.js"></script>
     <script src="src/funcionalidades.js"></script>
   </body>
 </html>
