@@ -235,6 +235,7 @@ class FuncTrigonometrica {
     }
 
     curva.pop();
+
     beginShape();
     for (let ponto of curva) {
       if (!isFinite(ponto.y)) {
