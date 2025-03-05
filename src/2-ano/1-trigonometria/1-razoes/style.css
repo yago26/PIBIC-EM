@@ -1,0 +1,81 @@
+/* CABEÇALHO */
+header {
+  margin-bottom: 3%;
+}
+
+/* SEÇÕES */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input[type="number"],
+input[type="text"] {
+  text-align: center;
+}
+
+input[type="number"] {
+  border: none;
+  background-color: transparent;
+}
+
+input[type="text"] {
+  width: 120px;
+}
+
+#agrupador {
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  padding: 20px;
+}
+
+.divisor {
+  height: 500px;
+}
+
+#angulos {
+  text-align: center;
+}
+
+#valoresLados label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.separador {
+  display: grid;
+  width: 275px;
+}
+
+#divTabela {
+  padding: 15px;
+}
+
+#tabela {
+  width: 100%;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#tabela th,
+#tabela td {
+  padding: 5px;
+}
+
+#tabela thead,
+#tabela td:not(td.valorTabela) {
+  background-color: rgb(162, 255, 182);
+}
+
+.valorTabela {
+  font-size: 20px;
+  background-color: rgb(245, 245, 245);
+}
+
+.valorTabela:hover {
+  background-color: rgb(230, 230, 230);
+  scale: 1.12;
+}

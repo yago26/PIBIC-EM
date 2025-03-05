@@ -4,145 +4,127 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Yago Jordas do Nascimento Pereira" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="PIBIC, Matemática, IFPB" />
+    <meta
+      name="description"
+      content="A matemática é frequentemente percebida como uma disciplina de difícil acesso, restrita a indivíduos talentosos, o que se deve, em grande parte, a metodologias de ensino tradicionais baseadas em regras mecânicas e conceitos abstratos. Para tornar o ensino mais acessível e dinâmico, este estudo investiga o uso de tecnologias educacionais, com ênfase na computação gráfica, como meio para aprimorar o processo de ensino-aprendizagem. A pesquisa propõe a utilização da biblioteca p5.js para o desenvolvimento de ferramentas interativas que permitam a visualização e manipulação de conceitos matemáticos. Espera-se que essa abordagem contribua para um ensino mais intuitivo e uma aprendizagem mais experimental e motivadora, promovendo maior compreensão e engajamento dos estudantes."
+    />
+    <meta
+      name="keywords"
+      content="Ensino da Matemática. PIBIC. Computação Gráfica."
+    />
     <title>PIBIC-EM</title>
     <link
       rel="shortcut icon"
-      href="assets/favicon-16x16.png"
+      href="./assets/favicon/favicon-16x16.png"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="style.css" />
-    <style>
-      body {
-        background-color: rgb(230, 230, 230);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 95vh;
-      }
-
-      body > div {
-        width: 40%;
-        padding: 50px;
-        background-color: rgb(255, 255, 255);
-        border-radius: 25px;
-      }
-
-      header {
-        text-align: center;
-        margin-bottom: 40px;
-      }
-
-      h1 {
-        color: rgb(71, 86, 158);
-        margin: 0;
-        padding: 0;
-      }
-
-      p.description {
-        text-align: justify;
-        text-indent: 5%;
-      }
-
-      .content a {
-        text-decoration: none;
-        color: #007bff;
-      }
-
-      .content a:hover {
-        text-decoration: underline;
-      }
-
-      ol {
-        counter-reset: item;
-        list-style-type: none;
-      }
-
-      ol > li {
-        counter-increment: item;
-      }
-
-      ol > li::before {
-        content: counter(item) ". ";
-      }
-
-      ol ol {
-        counter-reset: subitem;
-        list-style-type: none;
-        margin-left: 20px;
-      }
-
-      ol ol > li {
-        counter-increment: subitem;
-      }
-
-      ol ol > li::before {
-        content: counter(item) "." counter(subitem) ". ";
-      }
-    </style>
+    <link rel="stylesheet" href="./index.css" />
   </head>
 
   <body>
-    <div>
+    <div id="agrupador">
       <header>
-        <h1>PIBIC-EM</h1>
-        <hr />
-        <p style="color: gray">
-          Tema: Utilização da Computação Gráfica como ferramenta auxiliar na
-          aprendizagem matemática
-        </p>
+        <div id="introducao">
+          <h1>PIBIC-EM</h1>
+          <hr />
+          <p style="color: gray">
+            Tema: Utilização da Computação Gráfica como ferramenta auxiliar na
+            aprendizagem matemática
+          </p>
+        </div>
+
+        <div id="sobre">
+          <h2>Bem-vindo(a) ao menu!</h2>
+          <p class="description">
+            A partir da Computação Gráfica, procuramos auxiliar na aprendizagem
+            da matemática. Para tanto, faremos uso de recursos visuais para
+            otimizar e facilitar o entendimento dos estudantes quanto ao vasto
+            universo que envolve a matemática.
+            <span
+              style="
+                color: rgb(65, 245, 135);
+                font-weight: bold;
+                box-shadow: 2px 2px 15px 1px;
+                padding-inline: 5px;
+              "
+              >Bons estudos!</span
+            >
+            📚✍
+          </p>
+        </div>
       </header>
-      
-      <aside>
-        <h3>Bem-vindo ao menu!</h2>
-        <p class="description">
-          A partir da Computação Gráfica, procuramos auxiliar na aprendizagem da
-          matemática. Para tanto, faremos uso de recursos visuais para otimizar e
-          facilitar o entendimento dos estudantes quanto ao vasto universo que
-          envolve a matemática.
-          <span style="color: rgb(65, 245, 135); font-weight: bold; box-shadow: 3px 3px 3px 3px;"
-            >Bons estudos!</span
-          >
-          📚✍
-        </p>
-      </aside>
-      <article>
-        <h2>Nossos conteúdos:</h3>
-        2º ano EM
-        <ol>
-          <li class="content">
-            Trigonometria
+
+      <main>
+        <h2>Nossos conteúdos</h2>
+
+        <div id="conteudos">
+          <div id="conteudo-1" class="conteudo">
+            <span style="font-weight: bold">1º ano</span>
             <ol>
-              <li>
-                <a href="1-trigonometria/1-relacoes/index.html"
-                  >Relações Trigonométricas</a
-                >
-              </li>
-              <li>
-                <a href="1-trigonometria/2-circunferencia/index.html"
-                  >Circunferência Trigonométrica</a
-                >
-              </li>
-              <li>
-                <a href="1-trigonometria/3-funcoes/index.html"
-                  >Funções Trigonométricas</a
-                >
+              <li class="content">
+                Funções
+                <ol>
+                  <li>
+                    <a href="./src/1-ano/1-funcao/1-afim/index.html"
+                      >Função Afim</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./src/1-ano/1-funcao/2-quadratica/index.html"
+                      >Função Quadrática</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./src/1-ano/1-funcao/3-modular/index.html"
+                      >Função Modular</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./src/1-ano/1-funcao/4-exponencial/index.html"
+                      >Função Exponencial</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./src/1-ano/1-funcao/5-logaritmica/index.html"
+                      >Função Logarítmica</a
+                    >
+                  </li>
+                </ol>
               </li>
             </ol>
-          </li>
-          <li class="content"><a href="2-matrizes/index.html">Matrizes</a></li>
-          <li class="content">
-            Geometria
+          </div>
+
+          <div id="conteudo-2" class="conteudo">
+            <span style="font-weight: bold">2º ano</span>
             <ol>
-              <li><a href="3-geometria/1-plana/index.html">Geometria Plana</a></li>
-              <li>
-                <a href="3-geometria/2-espacial/index.html">Geometria Espacial</a>
+              <li class="content">
+                Trigonometria
+                <ol>
+                  <li>
+                    <a href="./src/2-ano/1-trigonometria/1-razoes/index.html"
+                      >Razões Trigonométricas</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="./src/2-ano/1-trigonometria/2-circunferencia/index.html"
+                      >Circunferência Trigonométrica</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./src/2-ano/1-trigonometria/3-funcoes/index.html"
+                      >Funções Trigonométricas</a
+                    >
+                  </li>
+                </ol>
+              </li>
+              <li class="content">
+                <a href="./src/2-ano/2-matrizes/index.html">Matrizes</a>
               </li>
             </ol>
-          </li>
-        </ol>
-      </article>
+          </div>
+        </div>
+      </main>
     </div>
   </body>
 </html>

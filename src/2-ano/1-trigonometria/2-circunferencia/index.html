@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>PIBIC-EM | Circunferência Trigonométrica</title>
+
+    <link
+      rel="shortcut icon"
+      href="../../../../assets/favicon/favicon-16x16.png"
+      type="image/x-icon"
+    />
+
+    <link rel="stylesheet" type="text/css" href="../../../style.css" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+
+    <script defer src="sketch.js"></script>
+    <script defer src="src/funcionalidades.js"></script>
+    <script defer src="src/Circunferencia.js"></script>
+    <script defer src="src/Tela.js"></script>
+    <script defer src="src/VetorLinha.js"></script>
+    <script defer src="src/Angulo.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1 class="titulo">
+        <span id="voltar"><a href="../../../../index.html">PIBIC-EM</a></span>
+        &gt; Circunferência Trigonométrica
+      </h1>
+      <hr />
+    </header>
+
+    <div id="agrupador">
+      <aside class="funcionalidades">
+        <div class="container">
+          <h2>Conversor</h2>
+          <label for="grauInput">
+            Grau(s):
+            <input
+              id="grauInput"
+              class="campo"
+              type="text"
+              name="grau"
+              placeholder="Ex.: 360; 90+45; 180/2; ..."
+            />
+          </label>
+          <label for="radInput">
+            π Radiano(s):
+            <input
+              id="radInput"
+              class="campo"
+              type="text"
+              name="rad"
+              placeholder="Ex.: 2; 1/2+1/4; 1/2; ..."
+            />
+          </label>
+          <button class="btn" onclick="converter()">converter</button>
+        </div>
+
+        <div class="container">
+          <h2>Consultor de Valores</h2>
+          <input
+            id="anguloInput"
+            class="campo"
+            type="text"
+            name="angulo"
+            placeholder="digite um ângulo..."
+          />
+          <button class="btn" onclick="mostrarValoresDoAngulo()">
+            consultar
+          </button>
+          <div id="resultadoAngulo"></div>
+        </div>
+      </aside>
+
+      <hr class="divisor" />
+
+      <hr id="divisorPrincipal" class="divisor" />
+
+      <aside class="funcionalidades">
+        <div class="container">
+          <h2>Primeira Ocorrência Positiva</h2>
+          <input
+            id="ocorrenciaPositivaInput"
+            class="campo"
+            type="text"
+            name="ocorrenciaPositiva"
+            placeholder="digite um ângulo..."
+          />
+          <button class="btn" onclick="mostrarPrimeiraOcorrenciaPositiva()">
+            consultar
+          </button>
+          <div id="resultadoOcorrenciaPositiva"></div>
+        </div>
+
+        <div class="container">
+          <h2>Configurações</h2>
+          <div class="configs">
+            <label for="modoRadianos">
+              <input id="modoRadianos" type="checkbox" name="modo-radianos" />
+              Radianos
+            </label>
+            <hr />
+            <label for="modoNegativo">
+              <input id="modoNegativo" type="checkbox" name="modo-negativo" />
+              Circunferência Negativa
+            </label>
+            <hr />
+            <label for="modoQuadrantes">
+              <input
+                id="modoQuadrantes"
+                type="checkbox"
+                name="modo-quadrantes"
+              />
+              Quadrantes
+            </label>
+            <hr />
+          </div>
+          <button id="apresentacao" class="btn">modo de apresentação</button>
+        </div>
+      </aside>
+    </div>
+  </body>
+</html>

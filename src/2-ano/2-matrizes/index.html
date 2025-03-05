@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>PIBIC-EM | Matrizes</title>
+
+    <link
+      rel="shortcut icon"
+      href="../../../assets/favicon/favicon-16x16.png"
+      type="image/x-icon"
+    />
+
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+
+    <script src="../../libraries/p5.min.js"></script>
+    <script src="../../libraries/p5.sound.min.js"></script>
+
+    <script defer src="sketch.js"></script>
+    <script defer src="src/Matriz.js"></script>
+    <script defer src="src/funcionalidades.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1 class="titulo">
+        <span id="voltar"><a href="../../../index.html">PIBIC-EM</a></span>
+        &gt; Matrizes
+      </h1>
+      <hr />
+    </header>
+
+    <div id="agrupador">
+      <section id="geradorMatriz">
+        <span>
+          Dimensões da matriz:
+          <input id="inputLinha" type="number" name="linha" min="1" />
+          x
+          <input id="inputColuna" type="number" name="coluna" min="1" />
+          <button class="btn" onclick="criarMatriz()">Confirmar</button>
+        </span>
+        <div class="matriz"></div>
+      </section>
+    </div>
+  </body>
+</html>

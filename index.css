@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: rgb(230, 230, 230);
+  display: grid;
+  place-items: center;
+  height: 95vh;
+}
+
+#agrupador {
+  display: flex;
+  background-color: rgb(255, 255, 255);
+
+  width: 75%;
+  height: 75%;
+  border-radius: 25px;
+
+  box-shadow: 1px 1px 15px 1px black;
+}
+
+header,
+main {
+  width: 50%;
+  padding: 50px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+main {
+  background-color: rgb(50, 50, 50);
+  color: whitesmoke;
+}
+
+#introducao {
+  text-align: center;
+}
+
+h1 {
+  color: rgb(71, 86, 158);
+}
+
+h2 {
+  font-size: larger;
+}
+
+main h2 {
+  text-shadow: 2px 2px black;
+}
+
+p.description {
+  text-align: justify;
+  text-indent: 5%;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(65, 245, 135);
+  /* color: #007bff; */
+}
+
+a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+ol {
+  counter-reset: item;
+  list-style-type: none;
+  margin: 0;
+}
+
+ol > li {
+  counter-increment: item;
+}
+
+ol > li::before {
+  content: counter(item) ". ";
+}
+
+ol ol {
+  counter-reset: subitem;
+  list-style-type: none;
+  margin-left: 20px;
+}
+
+ol ol > li {
+  counter-increment: subitem;
+}
+
+ol ol > li::before {
+  content: counter(item) "." counter(subitem) ". ";
+}
+
+#conteudos {
+  padding-left: 50px;
+}
