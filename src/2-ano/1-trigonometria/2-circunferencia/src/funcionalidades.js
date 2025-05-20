@@ -2,11 +2,6 @@ const radianosConfig = document.getElementById("modoRadianos");
 const negativoConfig = document.getElementById("modoNegativo");
 const quadrantesConfig = document.getElementById("modoQuadrantes");
 
-const btnConfig = document.getElementById("apresentacao");
-btnConfig.addEventListener("click", () => {
-  alert("Funcionalidade ainda não ativa...");
-});
-
 document.querySelectorAll("input").forEach((input) => {
   input.onfocus = () => {
     document.body.removeEventListener("keypress", pressionandoTeclas);

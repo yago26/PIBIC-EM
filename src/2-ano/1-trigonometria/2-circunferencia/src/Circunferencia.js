@@ -55,67 +55,67 @@ class Circunferencia {
       text("III", width / 5, height / 3.25 + height / 2);
       text("IV", width / 3.25 + width / 2, height / 3.25 + height / 2);
 
-      // POSITIVOS
-      fill("blue");
-      stroke("blue");
+      // Seno
+      fill("red");
+      stroke("red");
 
       text(
-        "+ Sen",
+        "Sen +",
         width / 2 - this.raio / 3,
         height / 2 - (2 * this.raio) / 3
       );
-
       text(
         "Sen +",
         width / 2 + this.raio / 3,
         height / 2 - (2 * this.raio) / 3
       );
+      text("Sen -", width / 2 - this.raio / 3, height / 2 + this.raio / 8);
+      text("Sen -", width / 2 + this.raio / 3, height / 2 + this.raio / 8);
+
+      // Cosseno
+      fill("blue");
+      stroke("blue");
+
       text(
         "Cos +",
         width / 2 + this.raio / 3,
         height / 2 - (2 * this.raio) / 3 + espacamento
       );
+      text(
+        "Cos +",
+        width / 2 + this.raio / 3,
+        height / 2 + this.raio / 8 + espacamento
+      );
+      text(
+        "Cos -",
+        width / 2 - this.raio / 3,
+        height / 2 - (2 * this.raio) / 3 + espacamento
+      );
+      text(
+        "Cos -",
+        width / 2 - this.raio / 3,
+        height / 2 + this.raio / 8 + espacamento
+      );
+
+      // Tangente
+      fill("green");
+      stroke("green");
+
       text(
         "Tan +",
         width / 2 + this.raio / 3,
         height / 2 - (2 * this.raio) / 3 + espacamento * 2
       );
-
       text(
-        "+ Tan",
+        "Tan +",
         width / 2 - this.raio / 3,
         height / 2 + this.raio / 8 + espacamento * 2
       );
-
       text(
-        "Cos +",
-        width / 2 + this.raio / 3,
-        height / 2 + this.raio / 8 + espacamento
-      );
-
-      // NEGATIVOS
-      fill("red");
-      stroke("red");
-
-      text(
-        "- Cos",
-        width / 2 - this.raio / 3,
-        height / 2 - (2 * this.raio) / 3 + espacamento
-      );
-      text(
-        "- Tan",
+        "Tan -",
         width / 2 - this.raio / 3,
         height / 2 - (2 * this.raio) / 3 + espacamento * 2
       );
-
-      text("- Sen", width / 2 - this.raio / 3, height / 2 + this.raio / 8);
-      text(
-        "- Cos",
-        width / 2 - this.raio / 3,
-        height / 2 + this.raio / 8 + espacamento
-      );
-
-      text("Sen -", width / 2 + this.raio / 3, height / 2 + this.raio / 8);
       text(
         "Tan -",
         width / 2 + this.raio / 3,

@@ -1,7 +1,7 @@
 class Tela {
-  #ajustarDimensoesCanvas;
-  constructor(metodo) {
-    this.#ajustarDimensoesCanvas = metodo;
+  constructor(areaUtilizavelCanvas, padding) {
+    (this.areaUtilizavelCanvas = areaUtilizavelCanvas),
+      (this.padding = padding);
 
     const divAgrupador = document.getElementById("agrupador");
     const sectionConfigs = document.getElementById("configs");
@@ -21,22 +21,13 @@ class Tela {
     }
   }
 
-  mostrarValores() {
-    push();
-
-    pop();
-  }
-
   mostrarGrades(valorZoom) {
     push();
-    this.#ajustarDimensoesCanvas();
 
     stroke("gray");
     strokeWeight(0.4);
 
-    this._mostrarMoldura();
-
-    let espacamento = width / 2 / 8;
+    let espacamento = this.areaUtilizavelCanvas.x / 2 / 8;
 
     switch (Math.sign(valorZoom)) {
       case -1:
@@ -52,12 +43,12 @@ class Tela {
     }
 
     // LINHA
-    for (let x = -width / 2 + espacamento; x < width / 2; x += espacamento) {
-      line(x, 0, x, height);
+    for (let x = this.padding; x <= width - this.padding; x += espacamento) {
+      line(x, this.padding - 30, x, height - this.padding + 30);
     }
     // COLUNA
-    for (let y = espacamento; y < height; y += espacamento) {
-      line(-width / 2, y, width / 2, y);
+    for (let y = this.padding; y <= height - padding; y += espacamento) {
+      line(this.padding - 30, y, width - this.padding + 30, y);
     }
 
     pop();
@@ -65,13 +56,23 @@ class Tela {
 
   mostrarLinhas() {
     push();
-    this.#ajustarDimensoesCanvas();
+    //this.#ajustarDimensoesCanvas();
     stroke("purple");
     strokeWeight(0.8);
     // X
-    this._linhaPontilhada(-width / 2, height / 2, width / 2, height / 2);
+    this._linhaPontilhada(
+      this.padding,
+      height / 2,
+      width - this.padding,
+      height / 2
+    );
     // Y
-    this._linhaPontilhada(0, 0, 0, height);
+    this._linhaPontilhada(
+      width / 2,
+      this.padding,
+      width / 2,
+      height - this.padding
+    );
     this._mostrarSetas(10);
     pop();
   }
@@ -80,37 +81,36 @@ class Tela {
     return mouseX >= 0 && mouseX < width && mouseY >= 0 && mouseY < height;
   }
 
-  _mostrarMoldura() {
-    push();
-    // LINHA
-    line(-width / 2, 0, width / 2, 0);
-    line(-width / 2, height, width / 2, height);
-    // COLUNA
-    line(-width / 2, 0, -width / 2, height);
-    line(width / 2, 0, width / 2, height);
-    pop();
-  }
-
   _mostrarSetas(espacamento) {
     push();
     fill("purple");
     stroke("purple");
     strokeWeight(1.6);
 
+    textSize(20);
+    textAlign(CENTER, CENTER);
     // X
+    text("x", width - this.padding / 1.75, height / 2);
     beginShape();
-    vertex(width / 2, height / 2);
-    vertex(width / 2 - espacamento, height / 2 - espacamento / 2);
-    vertex(width / 2 - espacamento, height / 2 + espacamento / 2);
-    vertex(width / 2, height / 2);
+    vertex(width - this.padding / 1.35, height / 2);
+    vertex(
+      width - this.padding / 1.35 - espacamento,
+      height / 2 - espacamento / 2
+    );
+    vertex(
+      width - this.padding / 1.35 - espacamento,
+      height / 2 + espacamento / 2
+    );
+    vertex(width - this.padding / 1.35, height / 2);
     endShape();
 
     // Y
+    text("y", width / 2, this.padding / 1.5);
     beginShape();
-    vertex(0, 0);
-    vertex(-espacamento / 2, espacamento);
-    vertex(espacamento / 2, espacamento);
-    vertex(0, 0);
+    vertex(width / 2, this.padding);
+    vertex(width / 2 - this.padding / 8, espacamento + this.padding);
+    vertex(width / 2 + this.padding / 8, espacamento + this.padding);
+    vertex(width / 2, this.padding);
     endShape();
     pop();
   }

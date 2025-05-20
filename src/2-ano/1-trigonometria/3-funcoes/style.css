@@ -26,13 +26,13 @@ h2 {
   margin-top: 2%;
 }
 
-#configs #coeficientes input {
+#coeficientes input {
   width: 30px;
   height: 30px;
   text-align: center;
 }
 
-#configs #funcoes label {
+#funcoes label {
   display: flex;
   align-items: center;
   margin-top: 10px;
@@ -41,4 +41,14 @@ h2 {
 #configs input[type="checkbox"] {
   transform: scale(2);
   margin-inline: 15px;
+}
+
+#marcador {
+  display: flex;
+  flex-direction: column;
+}
+
+#marcador #anguloInput {
+  padding-inline: 10px;
+  height: 30px;
 }

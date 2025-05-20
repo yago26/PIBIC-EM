@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>PIBIC-EM | Funções Trigonométricas</title>
+    <title>PIBIC-EM | Trigonometria : Funções Trigonométricas</title>
 
     <link
       rel="shortcut icon"
@@ -12,6 +12,7 @@
       type="image/x-icon"
     />
 
+    <link rel="stylesheet" type="text/css" href="../../../../globals.css" />
     <link rel="stylesheet" type="text/css" href="../../../style.css" />
     <link rel="stylesheet" type="text/css" href="./style.css" />
 
@@ -28,7 +29,7 @@
     <header>
       <h1 class="titulo">
         <span id="voltar"><a href="../../../../index.html">PIBIC-EM</a></span>
-        &gt; Funções Trigonométricas
+        &gt; Trigonometria &gt; Funções Trigonométricas
       </h1>
       <hr />
     </header>
@@ -38,7 +39,7 @@
         <div id="coeficientes">
           <h2>Coeficientes</h2>
           <p>
-            <span style="font-weight: bold"> f(x) = </span>
+            <span style="font-weight: bold"> y = </span>
             <label for="coeficienteA">
               <input
                 id="coeficienteA"
@@ -113,10 +114,23 @@
           </label>
         </div>
 
+        <div id="marcador">
+          <h2>Marcador</h2>
+          <input
+            id="anguloInput"
+            class="campo"
+            type="text"
+            name="angulo"
+            placeholder="digite um ângulo..."
+          />
+          <button class="btn" onclick="mostrarValoresDoAngulo()">marcar</button>
+          <div id="resultadoAngulo"></div>
+        </div>
+
         <div id="zoom">
           <h2>Zoom</h2>
-          <button id="ampliar" class="btn">+</button>
-          <button id="reduzir" class="btn">-</button>
+          <button id="reduzir" class="btn">+</button>
+          <button id="ampliar" class="btn">-</button>
         </div>
       </section>
       <ol>
@@ -124,11 +138,6 @@
         <li>
           <strong>Função Tangente:</strong> Problema com pontos de
           inderterminação
-        </li>
-        <li><strong>Dados (Espaçamento):</strong> Dados</li>
-        <li>
-          <strong>Vetor:</strong> Especificações de cada ponto passado pelo
-          mouse
         </li>
       </ol>
     </div>

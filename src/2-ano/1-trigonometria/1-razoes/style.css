@@ -73,6 +73,7 @@ input[type="text"] {
 .valorTabela {
   font-size: 20px;
   background-color: rgb(245, 245, 245);
+  transition: 0.1s;
 }
 
 .valorTabela:hover {

@@ -1,0 +1,3 @@
+* Unir as pastas em somente uma, contendo todos os conteúdos
+* Utilizar o modelo do Desmos como inspiração
+* Deixar montados exemplos para sevir de guia para os estudantes

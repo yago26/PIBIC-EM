@@ -1,5 +1,5 @@
 class FuncTrigonometrica {
-  constructor() {
+  constructor(areaUtilizavelCanvas, padding) {
     // periodo = TWO_PI / this.b;
     /*
     this.imagem = {
@@ -7,45 +7,64 @@ class FuncTrigonometrica {
       maximo: () => this.a * 2 + this.d,
     };
     */
-    this.a; // altura da onda
-    this.b; // comprimento da onda
-    this.c; // posição x da onda
-    this.d; // posição y da onda
-    this._atualizarCoeficientes();
+    /* CONFIGURAÇÕES */
+    (this.areaUtilizavelCanvas = areaUtilizavelCanvas),
+      (this.padding = padding);
 
-    this.inicio, this.final;
-    this.minimo, this.maximo;
-    this._atualizarZoom();
+    /* COEFICIENTES */
+    this.a = 1; // altura da onda
+    this.b = 1; // comprimento da onda
+    this.c = 0; // posição x da onda
+    this.d = 0; // posição y da onda
+
+    const coeficienteA = document.getElementById("coeficienteA");
+    coeficienteA.onchange = () =>
+      (this.a = coeficienteA.value === "" ? 1 : +coeficienteA.value);
+    const coeficienteB = document.getElementById("coeficienteB");
+    coeficienteB.onchange = () =>
+      (this.b = coeficienteB.value === "" ? 1 : +coeficienteB.value);
+    const coeficienteC = document.getElementById("coeficienteC");
+    coeficienteC.onchange = () =>
+      (this.c = coeficienteC.value === "" ? 0 : +coeficienteC.value);
+    const coeficienteD = document.getElementById("coeficienteD");
+    coeficienteD.onchange = () =>
+      (this.d = coeficienteD.value === "" ? 0 : +coeficienteD.value);
+
+    /* VARIÁVEIS */
+    (this.inicio = -360), (this.final = 360);
+    (this.minimo = -2), (this.maximo = 2);
 
     this.angulos = [];
+    this.radianos = [];
     this._atualizarAngulos();
 
-    (this.contadorAmpliar = 0), (this.contadorReduzir = 0);
-    this.valorZoom = this.contadorAmpliar - this.contadorReduzir;
-
-    this.tela = new Tela(this._ajustarDimensoesCanvas);
+    this.valorZoom = 0;
 
     const ampliar = document.getElementById("ampliar");
     ampliar.onclick = () => {
       if (this.valorZoom < 3) {
-        this.contadorAmpliar++;
+        (this.inicio *= 2), (this.final *= 2);
+        (this.minimo *= 2), (this.maximo *= 2);
+        this.valorZoom++;
+        this._atualizarAngulos();
       }
     };
     const reduzir = document.getElementById("reduzir");
     reduzir.onclick = () => {
-      if (this.valorZoom > -3) {
-        this.contadorReduzir++;
+      if (this.valorZoom > -2) {
+        (this.inicio /= 2), (this.final /= 2);
+        (this.minimo /= 2), (this.maximo /= 2);
+        this.valorZoom--;
+        this._atualizarAngulos();
       }
     };
+
+    this.tela = new Tela(areaUtilizavelCanvas, padding);
   }
 
   mostrar() {
-    this._atualizarZoom();
-
     this.tela.mostrarGrades(this.valorZoom);
     this.tela.mostrarLinhas();
-
-    this._atualizarCoeficientes();
 
     if (document.getElementById("funcSen").checked) {
       this.mostrarSeno();
@@ -60,22 +79,28 @@ class FuncTrigonometrica {
 
   mostrarValores() {
     push();
-    this._ajustarDimensoesCanvas();
-    this._atualizarAngulos();
+    /* RADIANOS - VALORES DE X */
     textSize(14);
     stroke("black");
     textAlign(CENTER, CENTER);
-    let radiano, piRad, x;
-    for (let angulo of this.angulos) {
+
+    let angulo, radiano, piRad;
+    for (
+      let x = this.padding;
+      x <= width - this.padding;
+      x += this.areaUtilizavelCanvas.x / 8
+    ) {
       push();
-      if (this.angulos[0] === angulo) {
-        textAlign(LEFT, CENTER);
-      } else if (this.angulos[this.angulos.length - 1] === angulo) {
-        textAlign(RIGHT, CENTER);
-      }
+      angulo = map(
+        x,
+        this.padding,
+        width - this.padding,
+        this.inicio,
+        this.final
+      );
       radiano = radians(angulo);
       piRad = radiano / PI;
-      x = map(radiano, this.inicio, this.final, -width / 2, width / 2);
+
       text(
         `${
           piRad === 0
@@ -87,19 +112,36 @@ class FuncTrigonometrica {
             : piRad.toFixed(3)
         }π`,
         x,
-        height / 2 + 20
+        height - this.padding / 2
       );
       fill("brown");
       stroke("brown");
-      text(`${angulo.toFixed(0)}°`, x, height / 2 + 35);
+      text(`${angulo.toFixed(0)}°`, x, height - this.padding / 2 + 15);
       pop();
     }
+
+    /* VALORES DE Y */
+    fill(0);
+    text(this.maximo.toFixed(1), this.padding / 2, this.padding);
+    text((this.maximo / 2).toFixed(1), this.padding / 2, height / 3.25);
+    text(
+      this.minimo.toFixed(1),
+      this.padding / 2,
+      this.padding + this.areaUtilizavelCanvas.y
+    );
+    text(
+      (this.minimo / 2).toFixed(1),
+      this.padding / 2,
+      height - height / 3.25
+    );
+    text("0", this.padding / 2, height / 2);
+
     pop();
   }
 
   mostrarSeno() {
     push();
-    this._ajustarDimensoesCanvas();
+    angleMode(DEGREES);
 
     fill("red");
     stroke("gray");
@@ -107,34 +149,55 @@ class FuncTrigonometrica {
 
     text(
       `f(x) = ${this.a}.sen(${this.b}.x+${this.c}) + ${this.d}`,
-      -width / 2 + 50,
-      50
+      this.padding * 1.5,
+      this.padding
     );
 
     const listaDeValores = [];
-    let radiano;
+    let anguloSeno;
 
-    for (let i = -width / 2; i <= width / 2; i++) {
-      radiano = map(i, -width / 2, width / 2, this.inicio, this.final);
-      listaDeValores[i + width / 2] =
-        this.a * sin(this.b * radiano + this.c) + this.d;
+    for (let i = 0; i <= this.areaUtilizavelCanvas.x; i++) {
+      anguloSeno = map(
+        i + this.padding,
+        this.padding,
+        width - this.padding,
+        this.inicio,
+        this.final
+      );
+      listaDeValores[i] = this.a * sin(this.b * anguloSeno + this.c) + this.d;
     }
 
     noFill();
     stroke("red");
     strokeWeight(2.5);
 
-    let y;
+    let y,
+      shapeFinalizado = false;
     beginShape();
-    for (let x = -width / 2; x <= width / 2; x++) {
-      y = map(
-        listaDeValores[x + width / 2],
-        this.minimo,
-        this.maximo,
-        height,
-        0
-      );
-      vertex(x, y);
+    for (let x = 0; x <= this.areaUtilizavelCanvas.x; x++) {
+      if (
+        !(listaDeValores[x] < this.minimo || listaDeValores[x] > this.maximo)
+      ) {
+        if (shapeFinalizado) {
+          beginShape();
+          shapeFinalizado = false;
+        }
+
+        y = map(
+          listaDeValores[x],
+          this.minimo,
+          this.maximo,
+          height - this.padding,
+          this.padding
+        );
+
+        vertex(x + this.padding, y);
+      } else {
+        if (!shapeFinalizado) {
+          endShape();
+          shapeFinalizado = true;
+        }
+      }
     }
     endShape();
     pop();
@@ -142,7 +205,7 @@ class FuncTrigonometrica {
 
   mostrarCosseno() {
     push();
-    this._ajustarDimensoesCanvas();
+    angleMode(DEGREES);
 
     textSize(16);
     fill("blue");
@@ -150,34 +213,56 @@ class FuncTrigonometrica {
 
     text(
       `g(x) = ${this.a}.cos(${this.b}.x+${this.c}) + ${this.d}`,
-      -width / 2 + 50,
-      75
+      this.padding * 1.5,
+      this.padding * 1.5
     );
 
     const listaDeValores = [];
-    let radiano;
+    let anguloCosseno;
 
-    for (let i = -width / 2; i <= width / 2; i++) {
-      radiano = map(i, -width / 2, width / 2, this.inicio, this.final);
-      listaDeValores[i + width / 2] =
-        this.a * cos(this.b * radiano + this.c) + this.d;
+    for (let i = 0; i <= this.areaUtilizavelCanvas.x; i++) {
+      anguloCosseno = map(
+        i + this.padding,
+        this.padding,
+        width - this.padding,
+        this.inicio,
+        this.final
+      );
+      listaDeValores[i] =
+        this.a * cos(this.b * anguloCosseno + this.c) + this.d;
     }
 
     noFill();
     stroke("blue");
     strokeWeight(2.5);
 
-    let y;
+    let y,
+      shapeFinalizado = false;
     beginShape();
-    for (let x = -width / 2; x <= width / 2; x++) {
-      y = map(
-        listaDeValores[x + width / 2],
-        this.minimo,
-        this.maximo,
-        height,
-        0
-      );
-      vertex(x, y);
+    for (let x = 0; x <= this.areaUtilizavelCanvas.x; x++) {
+      if (
+        !(listaDeValores[x] < this.minimo || listaDeValores[x] > this.maximo)
+      ) {
+        if (shapeFinalizado) {
+          beginShape();
+          shapeFinalizado = false;
+        }
+
+        y = map(
+          listaDeValores[x],
+          this.minimo,
+          this.maximo,
+          height - this.padding,
+          this.padding
+        );
+
+        vertex(x + this.padding, y);
+      } else {
+        if (!shapeFinalizado) {
+          endShape();
+          shapeFinalizado = true;
+        }
+      }
     }
     endShape();
     pop();
@@ -185,7 +270,7 @@ class FuncTrigonometrica {
 
   mostrarTangente() {
     push();
-    this._ajustarDimensoesCanvas();
+    angleMode(DEGREES);
 
     textSize(16);
     fill("green");
@@ -193,118 +278,181 @@ class FuncTrigonometrica {
 
     text(
       `h(x) = ${this.a}.tan(${this.b}.x+${this.c}) + ${this.d}`,
-      -width / 2 + 50,
-      100
+      this.padding * 1.5,
+      this.padding * 2
     );
 
     noFill();
     stroke("green");
     strokeWeight(2.5);
 
-    let y, xRad;
+    const listaDeValores = [];
+    let anguloTangente;
 
-    let curva = [];
-
-    let limEsq = -width / 2;
-    let limDir = width / 2;
-
-    let limRadEsq = this.inicio;
-    let limRadDir = this.final;
-    let step = HALF_PI / this.b;
-
-    let pontosIndeterminacao = [];
-    for (let i = limRadEsq + step; i <= limRadDir; i += PI) {
-      pontosIndeterminacao.push(i);
-    }
-
-    for (let x = limEsq; x <= limDir; x++) {
-      xRad = map(x, limEsq, limDir, limRadEsq, limRadDir);
-      y = map(
-        this.a * tan(this.b * xRad + this.c) + this.d,
-        this.minimo,
-        this.maximo,
-        height,
-        0
+    for (let i = 0; i <= this.areaUtilizavelCanvas.x; i++) {
+      anguloTangente = map(
+        i + this.padding,
+        this.padding,
+        width - this.padding,
+        this.inicio,
+        this.final
       );
-
-      if (pontosIndeterminacao.find((v) => this._compareFloat(v, xRad, 1e-1))) {
-        curva.push({ x, Infinity });
-      } else {
-        curva.push({ x, y });
-      }
+      listaDeValores[i] =
+        this.a * tan(this.b * anguloTangente + this.c) + this.d;
     }
 
-    curva.pop();
-
+    let y,
+      shapeFinalizado = false;
     beginShape();
-    for (let ponto of curva) {
-      if (!isFinite(ponto.y)) {
-        endShape();
-        beginShape();
+    for (let x = 0; x <= this.areaUtilizavelCanvas.x; x++) {
+      if (
+        !(listaDeValores[x] < this.minimo || listaDeValores[x] > this.maximo)
+      ) {
+        if (shapeFinalizado) {
+          beginShape();
+          listaDeValores[x] < 0
+            ? vertex(x + this.padding, height - this.padding)
+            : vertex(x + this.padding, this.padding);
+          shapeFinalizado = false;
+        }
+
+        y = map(
+          listaDeValores[x],
+          this.minimo,
+          this.maximo,
+          height - this.padding,
+          this.padding
+        );
+
+        vertex(x + this.padding, y);
+      } else {
+        if (!shapeFinalizado) {
+          if (abs(listaDeValores[x]) > this.maximo) {
+            listaDeValores[x] > 0
+              ? vertex(x + this.padding, this.padding)
+              : vertex(x + this.padding, height - this.padding);
+          }
+          endShape();
+          shapeFinalizado = true;
+        }
       }
-      vertex(ponto.x, ponto.y);
     }
+
     endShape();
 
     pop();
   }
 
-  _compareFloat(v1, v2, prec) {
-    return Math.abs(v1 - v2) <= prec;
-  }
+  definirPonto() {
+    push();
+    angleMode(DEGREES);
+    if (this.tela.sobCanvas()) {
+      if (
+        mouseX < this.padding ||
+        mouseX > this.areaUtilizavelCanvas.x + this.padding
+      )
+        return;
 
-  _ajustarDimensoesCanvas() {
-    translate(width / 2, 0);
-  }
+      textAlign(CENTER, BOTTOM);
 
-  _atualizarCoeficientes() {
-    const coeficienteA = document.getElementById("coeficienteA");
-    this.a = coeficienteA.value === "" ? 1 : +coeficienteA.value;
+      let x = map(
+        mouseX,
+        this.padding,
+        width - this.padding,
+        this.inicio,
+        this.final
+      );
 
-    const coeficienteB = document.getElementById("coeficienteB");
-    this.b = coeficienteB.value === "" ? 1 : +coeficienteB.value;
+      if (document.getElementById("funcSen").checked) {
+        let valorY = this.a * sin(this.b * x + this.c) + this.d;
 
-    const coeficienteC = document.getElementById("coeficienteC");
-    this.c = coeficienteC.value === "" ? 0 : +coeficienteC.value;
+        if (valorY >= this.minimo && valorY <= this.maximo) {
+          let posY = map(
+            valorY,
+            this.minimo,
+            this.maximo,
+            height - this.padding,
+            this.padding
+          );
 
-    const coeficienteD = document.getElementById("coeficienteD");
-    this.d = coeficienteD.value === "" ? 0 : +coeficienteD.value;
+          stroke("firebrick");
+          fill("firebrick");
+
+          circle(mouseX, posY, 10);
+          text(
+            `( x: ${x.toFixed(0)}, y: ${valorY.toFixed(2)} )`,
+            mouseX,
+            posY - 10
+          );
+        }
+      }
+      if (document.getElementById("funcCos").checked) {
+        let valorY = this.a * cos(this.b * x + this.c) + this.d;
+
+        if (valorY >= this.minimo && valorY <= this.maximo) {
+          let posY = map(
+            valorY,
+            this.minimo,
+            this.maximo,
+            height - this.padding,
+            this.padding
+          );
+
+          stroke("darkblue");
+          fill("darkblue");
+
+          circle(mouseX, posY, 10);
+          text(
+            `( x: ${x.toFixed(0)}, y: ${valorY.toFixed(2)} )`,
+            mouseX,
+            posY - 10
+          );
+        }
+      }
+      if (document.getElementById("funcTan").checked) {
+        let valorY = this.a * tan(this.b * x + this.c) + this.d;
+
+        if (!(valorY < this.minimo || valorY > this.maximo)) {
+          let posY = map(
+            valorY,
+            this.minimo,
+            this.maximo,
+            height - this.padding,
+            this.padding
+          );
+
+          stroke("darkgreen");
+          fill("darkgreen");
+
+          circle(mouseX, posY, 10);
+          text(
+            `( x: ${x.toFixed(0)}, y: ${valorY.toFixed(2)} )`,
+            mouseX,
+            posY - 10
+          );
+        }
+      }
+    }
+    pop();
   }
 
   _atualizarAngulos() {
-    this.angulos = [];
-    let radiano, angulo;
-    for (let x = -width / 2; x <= width / 2; x += width / 2 / 8) {
-      radiano = map(x, -width / 2, width / 2, this.inicio, this.final);
-      angulo = Number(degrees(radiano).toFixed(0));
+    let angulo;
+    for (
+      let x = this.padding;
+      x <= width - this.padding;
+      x += this.areaUtilizavelCanvas.x / 8
+    ) {
+      angulo = map(
+        x,
+        this.padding,
+        width - this.padding,
+        this.inicio,
+        this.final
+      );
       if (!this.angulos.includes(angulo)) {
         this.angulos.push(angulo);
       }
-    }
-  }
-
-  _atualizarZoom() {
-    this.inicio = -TWO_PI;
-    this.final = TWO_PI;
-
-    this.minimo = -2;
-    this.maximo = 2;
-
-    this.valorZoom = this.contadorAmpliar - this.contadorReduzir;
-
-    switch (Math.sign(this.valorZoom)) {
-      case -1:
-        for (let i = 0; i < abs(this.valorZoom); i++) {
-          (this.inicio /= 2), (this.final /= 2);
-          (this.minimo /= 2), (this.maximo /= 2);
-        }
-        break;
-      case 1:
-        for (let i = 0; i < this.valorZoom; i++) {
-          (this.inicio *= 2), (this.final *= 2);
-          (this.minimo *= 2), (this.maximo *= 2);
-        }
-        break;
     }
   }
 }

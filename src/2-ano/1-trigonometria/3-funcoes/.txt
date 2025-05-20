@@ -1,0 +1,2 @@
+* Sacrificar minha alma pra conseguir corrigir esse problema da Tangente
+* Adicionar um consultar/buscar/marcador para achar o ângulo e seu valor com a resolução de como chegar a aquele resultado

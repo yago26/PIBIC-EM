@@ -1,0 +1,14 @@
+a:hover,
+input:hover,
+button:hover,
+label:hover {
+  scale: 1.05;
+}
+
+a,
+input,
+button,
+label {
+  cursor: pointer;
+  transition: 0.1s;
+}

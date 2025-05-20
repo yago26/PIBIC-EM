@@ -53,9 +53,9 @@ function pressionandoTeclas(event) {
     tanConfig.checked = !tanConfig.checked;
   }
   if (event.key === "=") {
-    ampliar.click();
+    reduzir.click();
   }
   if (event.key === "-") {
-    reduzir.click();
+    ampliar.click();
   }
 }

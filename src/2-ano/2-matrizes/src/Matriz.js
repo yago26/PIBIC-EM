@@ -2,6 +2,7 @@ class Matriz {
   constructor(valores) {
     this.valores = valores;
   }
+
   compararTipos(matriz) {
     if (
       this.valores.length !== matriz.length ||
@@ -10,11 +11,13 @@ class Matriz {
       return false;
     return true;
   }
+
   identidade(n) {
     return Array.from({ length: n }, (v, i) =>
       Array.from({ length: n }, (v, j) => (i === j ? 1 : 0))
     );
   }
+
   somar(matriz) {
     if (!compararTipos(matriz)) return;
     const matrizR = [];
@@ -27,6 +30,7 @@ class Matriz {
     this.valores = matrizR;
     return this.valores;
   }
+
   subtrair(matriz) {
     if (!compararTipos(matriz)) return;
     const matrizR = [];
@@ -39,6 +43,7 @@ class Matriz {
     this.valores = matrizR;
     return this.valores;
   }
+
   multiplicar(matriz) {
     if (this.valores[0].length !== matriz.length)
       return console.log("Impossível realizar a multiplicação");
@@ -60,6 +65,7 @@ class Matriz {
     this.valores = matrizR;
     return this.valores;
   }
+
   elevar(potencia = 2) {
     if (this.valores.length !== this.valores[0].length)
       return console.log("Não é quadrática");
@@ -71,6 +77,7 @@ class Matriz {
     }
     return this.valores;
   }
+
   transpor() {
     const matrizR = [];
     for (let i in this.valores) {
