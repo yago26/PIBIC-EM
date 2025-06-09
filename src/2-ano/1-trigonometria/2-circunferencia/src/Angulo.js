@@ -7,6 +7,9 @@ class Angulo {
     angleMode(DEGREES);
     this.x = cos(-angulo) * raio + width / 2;
     this.y = sin(-angulo) * raio + height / 2;
+
+    this.xTexto = cos(-this.angulo) * ((5 * this.raio) / 4) + width / 2;
+    this.yTexto = sin(-this.angulo) * ((5 * this.raio) / 4) + width / 2;
   }
 
   mostrar() {
@@ -27,6 +30,8 @@ class Angulo {
 
     let x = cos(-this.angulo) * ((5 * this.raio) / 4) + width / 2;
     let y = sin(-this.angulo) * ((5 * this.raio) / 4) + height / 2;
+    this.xTexto = x;
+    this.yTexto = y;
 
     if (document.getElementById("modoRadianos").checked) {
       fracRad(radianos[this.angulo], x, y, this.angulo, cor);
@@ -73,7 +78,100 @@ class Angulo {
   }
 
   sobMouse() {
-    return dist(mouseX, mouseY, this.x, this.y) <= this.diametro / 2;
+    let sobreCirculo =
+      dist(mouseX, mouseY, this.x, this.y) <= this.diametro / 2;
+    if (sobreCirculo) {
+      return true;
+    }
+
+    // --- Verificação 2: Mouse sobre o texto ---
+    let sobreTexto = false;
+    const coordXTexto = this.xTexto; // Coordenada X de referência para o texto
+    const coordYTexto = this.yTexto; // Coordenada Y de referência para o texto
+    const tamanhoFonte = 18; // Tamanho da fonte usado em mostrar()
+
+    // Isolar mudanças de estilo de texto para medição precisa
+    push();
+    textSize(tamanhoFonte);
+
+    let larguraRealTexto, alturaRealTexto, xRetanguloTexto, yRetanguloTexto;
+
+    // A altura do texto pode ser aproximada pelo tamanho da fonte,
+    // especialmente com alinhamento vertical CENTER.
+    alturaRealTexto = tamanhoFonte;
+
+    let textoParaMedir = "";
+    let alinHorizontTexto; // Alinhamento horizontal a ser usado
+
+    if (document.getElementById("modoRadianos").checked) {
+      // Texto gerado por fracRad()
+      if (
+        typeof radianos !== "undefined" &&
+        typeof radianos[this.angulo] !== "undefined"
+      ) {
+        textoParaMedir = String(radianos[this.angulo]);
+      } else {
+        // Se 'radianos' ou o ângulo específico não estiverem disponíveis,
+        // não podemos medir o texto com precisão. Pode-se usar um fallback
+        // ou simplesmente não detectar hover para este caso.
+        // Para este exemplo, se não houver texto, não haverá hover no texto.
+        pop(); // Restaura configurações de texto
+        return false; // Ou apenas sobreCirculo, já que não há texto para verificar
+      }
+
+      // Assume que fracRad usa o mesmo alinhamento horizontal que o texto de graus
+      if (this.angulo < 90 || (this.angulo > 270 && this.angulo < 360)) {
+        alinHorizontTexto = LEFT;
+      } else if (this.angulo > 90 && this.angulo < 270) {
+        alinHorizontTexto = RIGHT;
+      } else {
+        alinHorizontTexto = CENTER;
+      }
+    } else {
+      // Texto é o ângulo em graus
+      textoParaMedir = document.getElementById("modoNegativo").checked
+        ? `${-360 + this.angulo}°`
+        : `${this.angulo}°`;
+
+      // Determina o alinhamento para o texto em graus (como em mostrar())
+      if (this.angulo < 90 || (this.angulo > 270 && this.angulo < 360)) {
+        alinHorizontTexto = LEFT;
+      } else if (this.angulo > 90 && this.angulo < 270) {
+        alinHorizontTexto = RIGHT;
+      } else {
+        alinHorizontTexto = CENTER;
+      }
+    }
+
+    larguraRealTexto = textWidth(textoParaMedir);
+
+    // Calcula as coordenadas (x, y) do canto superior esquerdo do retângulo do texto
+    if (alinHorizontTexto === LEFT) {
+      xRetanguloTexto = coordXTexto;
+    } else if (alinHorizontTexto === RIGHT) {
+      xRetanguloTexto = coordXTexto - larguraRealTexto;
+    } else {
+      // CENTER
+      xRetanguloTexto = coordXTexto - larguraRealTexto / 2;
+    }
+
+    // Como textAlign vertical é CENTER, coordYTexto é o centro vertical do texto.
+    yRetanguloTexto = coordYTexto - alturaRealTexto / 2;
+
+    pop(); // Restaura configurações de texto anteriores
+
+    // Verifica se o mouse está dentro do retângulo calculado para o texto
+    if (
+      mouseX >= xRetanguloTexto &&
+      mouseX <= xRetanguloTexto + larguraRealTexto &&
+      mouseY >= yRetanguloTexto &&
+      mouseY <= yRetanguloTexto + alturaRealTexto
+    ) {
+      sobreTexto = true;
+    }
+
+    return sobreTexto; // Retorna true se estiver sobre o texto (já que sobreCirculo foi tratado)
+    // A lógica original era OR, então se chegou aqui é porque não estava no círculo.
   }
 }
 

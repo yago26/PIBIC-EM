@@ -80,3 +80,15 @@ input[type="text"] {
   background-color: rgb(230, 230, 230);
   scale: 1.12;
 }
+
+#vermelho {
+  color: red;
+}
+
+#azul {
+  color: blue;
+}
+
+#verde {
+  color: #00bf63;
+}

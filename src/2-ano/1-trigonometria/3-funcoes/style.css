@@ -52,3 +52,15 @@ h2 {
   padding-inline: 10px;
   height: 30px;
 }
+
+#vermelho {
+  color: red;
+}
+
+#azul {
+  color: blue;
+}
+
+#verde {
+  color: #00bf63;
+}

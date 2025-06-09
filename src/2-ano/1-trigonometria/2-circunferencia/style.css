@@ -77,14 +77,20 @@ input[type="text"] {
   font-size: 20px;
 }
 
-.senValor {
+.senValor,
+#vermelho {
   color: red;
 }
 
-.cosValor {
+.cosValor,
+#azul {
   color: blue;
 }
 
 .tanValor {
   color: green;
+}
+
+#verde {
+  color: #00bf63;
 }
