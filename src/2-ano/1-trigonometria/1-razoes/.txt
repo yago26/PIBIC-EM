@@ -1,2 +1,2 @@
 * Lidar com o problema da definição dos valores dos lados
-* Colocar a segunda tabela referente aos valores personalizados
+* Trazer um exemplo para cada valor

@@ -46,21 +46,39 @@
           <div class="separador">
             <label for="ladoB">
               <span style="color: blue; font-weight: bold">Base:</span>
-              <input id="ladoB" class="valorLado" type="text" name="b" />
+              <input
+                id="ladoB"
+                class="valorLado"
+                type="text"
+                name="b"
+                readonly
+              />
             </label>
           </div>
           <hr />
           <div class="separador">
             <label for="ladoC">
               <span style="color: red; font-weight: bold">Altura:</span>
-              <input id="ladoC" class="valorLado" type="text" name="c" />
+              <input
+                id="ladoC"
+                class="valorLado"
+                type="text"
+                name="c"
+                readonly
+              />
             </label>
           </div>
           <hr />
           <div class="separador">
             <label for="ladoA">
               <span style="color: green; font-weight: bold">Hipotenusa:</span>
-              <input id="ladoA" class="valorLado" type="text" name="a" />
+              <input
+                id="ladoA"
+                class="valorLado"
+                type="text"
+                name="a"
+                readonly
+              />
             </label>
           </div>
         </div>
@@ -124,9 +142,18 @@
         <ul>
           <li>Principais Ângulos Notáveis</li>
           <div id="divTabela">
-            <table id="tabela">
+            <table class="tabela">
               <thead>
-                <th></th>
+                <th>
+                  <button onclick="abrirModal()">
+                    <img
+                      src="../../../../assets/expandir.svg"
+                      alt="Icone de expandir para Tabela Trigonométrica Completa"
+                      width="20"
+                      height="20"
+                    />
+                  </button>
+                </th>
                 <th>30°</th>
                 <th>45°</th>
                 <th>60°</th>
@@ -207,16 +234,366 @@
           </div>
 
           <li>Ângulos Personalizados</li>
+          <div id="divTabela">
+            <table class="tabela">
+              <thead>
+                <th></th>
+                <th id="anguloPersonalizadoAlpha">45°</th>
+                <th id="anguloPersonalizadoBeta">45°</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sen</td>
+                  <td
+                    id="valorAnguloPersonalizadoAlpha-seno"
+                    class="valorTabela"
+                  >
+                    0.7071
+                  </td>
+                  <td
+                    id="valorAnguloPersonalizadoBeta-seno"
+                    class="valorTabela"
+                  >
+                    0.7071
+                  </td>
+                </tr>
+                <tr>
+                  <td>Cos</td>
+                  <td
+                    id="valorAnguloPersonalizadoAlpha-cosseno"
+                    class="valorTabela"
+                  >
+                    0.7071
+                  </td>
+                  <td
+                    id="valorAnguloPersonalizadoBeta-cosseno"
+                    class="valorTabela"
+                  >
+                    0.7071
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tan</td>
+                  <td
+                    id="valorAnguloPersonalizadoAlpha-tangente"
+                    class="valorTabela"
+                  >
+                    1.0000
+                  </td>
+                  <td
+                    id="valorAnguloPersonalizadoBeta-tangente"
+                    class="valorTabela"
+                  >
+                    1.0000
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot></tfoot>
+            </table>
+          </div>
         </ul>
       </section>
     </div>
 
-    <ol>
-      <strong>OBS.:</strong>
-      <li>
-        <strong>Tabela Trigonométrica:</strong> Trazer um exemplo para cada
-        valor
-      </li>
-    </ol>
+    <dialog id="modal">
+      <header>
+        <h2>Tabela Trigonométrica Expandida</h2>
+        <button onclick="fecharModal()">X</button>
+      </header>
+      <hr />
+      <div>
+        <table class="tabela">
+          <thead>
+            <th></th>
+            <th>0°</th>
+            <th>30°</th>
+            <th>45°</th>
+            <th>60°</th>
+            <th>90°</th>
+            <th>120°</th>
+            <th>135°</th>
+            <th>150°</th>
+            <th>180°</th>
+            <th>210°</th>
+            <th>225°</th>
+            <th>240°</th>
+            <th>270°</th>
+            <th>300°</th>
+            <th>315°</th>
+            <th>330°</th>
+            <th>360°</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sen</td>
+              <td class="valorTabela">0</td>
+              <td class="valorTabela">
+                <math
+                  ><mfrac
+                    ><mrow><mn>1</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">
+                <math
+                  ><mfrac
+                    ><mrow><mn>&radic;2</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">
+                <math
+                  ><mfrac
+                    ><mrow><mn>&radic;3</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">1</td>
+              <td class="valorTabela">
+                <math
+                  ><mfrac
+                    ><mrow><mn>&radic;3</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">
+                <math
+                  ><mfrac
+                    ><mrow><mn>&radic;2</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">
+                <math
+                  ><mfrac
+                    ><mrow><mn>1</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">0</td>
+              <td class="valorTabela">
+                -<math
+                  ><mfrac
+                    ><mrow><mn>1</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">
+                -<math
+                  ><mfrac
+                    ><mrow><mn>&radic;2</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">
+                -<math
+                  ><mfrac
+                    ><mrow><mn>&radic;3</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">-1</td>
+              <td class="valorTabela">
+                -<math
+                  ><mfrac
+                    ><mrow><mn>&radic;3</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">
+                -<math
+                  ><mfrac
+                    ><mrow><mn>&radic;2</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">
+                -<math
+                  ><mfrac
+                    ><mrow><mn>1</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">0</td>
+            </tr>
+            <tr>
+              <td>Cos</td>
+              <td class="valorTabela">1</td>
+              <td class="valorTabela">
+                <math
+                  ><mfrac
+                    ><mrow><mn>&radic;3</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">
+                <math
+                  ><mfrac
+                    ><mrow><mn>&radic;2</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">
+                <math
+                  ><mfrac
+                    ><mrow><mn>1</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">0</td>
+              <td class="valorTabela">
+                -<math
+                  ><mfrac
+                    ><mrow><mn>1</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">
+                -<math
+                  ><mfrac
+                    ><mrow><mn>&radic;2</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">
+                -<math
+                  ><mfrac
+                    ><mrow><mn>&radic;3</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">-1</td>
+              <td class="valorTabela">
+                -<math
+                  ><mfrac
+                    ><mrow><mn>&radic;3</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">
+                -<math
+                  ><mfrac
+                    ><mrow><mn>&radic;2</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">
+                -<math
+                  ><mfrac
+                    ><mrow><mn>1</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">0</td>
+              <td class="valorTabela">
+                <math
+                  ><mfrac
+                    ><mrow><mn>1</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">
+                <math
+                  ><mfrac
+                    ><mrow><mn>&radic;2</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">
+                <math
+                  ><mfrac
+                    ><mrow><mn>&radic;3</mn></mrow
+                    ><mn>2</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">1</td>
+            </tr>
+            <tr>
+              <td>Tan</td>
+              <td class="valorTabela">0</td>
+              <td class="valorTabela">
+                <math
+                  ><mfrac
+                    ><mrow><mn>&radic;3</mn></mrow
+                    ><mn>3</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">1</td>
+              <td class="valorTabela">
+                <math><mn>&radic;3</mn></math>
+              </td>
+              <td class="valorTabela">∄</td>
+
+              <td class="valorTabela">
+                <math><mn>-&radic;3</mn></math>
+              </td>
+              <td class="valorTabela">-1</td>
+              <td class="valorTabela">
+                -<math
+                  ><mfrac
+                    ><mrow><mn>&radic;3</mn></mrow
+                    ><mn>3</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">0</td>
+              <td class="valorTabela">
+                <math
+                  ><mfrac
+                    ><mrow><mn>&radic;3</mn></mrow
+                    ><mn>3</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">1</td>
+              <td class="valorTabela">
+                <math><mn>&radic;3</mn></math>
+              </td>
+              <td class="valorTabela">∄</td>
+              <td class="valorTabela">
+                <math><mn>-&radic;3</mn></math>
+              </td>
+              <td class="valorTabela">-1</td>
+              <td class="valorTabela">
+                -<math
+                  ><mfrac
+                    ><mrow><mn>&radic;3</mn></mrow
+                    ><mn>3</mn></mfrac
+                  ></math
+                >
+              </td>
+              <td class="valorTabela">0</td>
+            </tr>
+          </tbody>
+          <tfoot></tfoot>
+        </table>
+      </div>
+      <footer></footer>
+    </dialog>
   </body>
 </html>

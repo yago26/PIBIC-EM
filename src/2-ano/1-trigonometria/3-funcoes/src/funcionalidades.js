@@ -59,3 +59,7 @@ function pressionandoTeclas(event) {
     ampliar.click();
   }
 }
+
+function mostrarValoresDoAngulo() {
+  return alert("Funcionalidade ainda indisponível...");
+}

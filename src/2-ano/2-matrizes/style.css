@@ -16,3 +16,15 @@ input[type="number"] {
 .btn {
   padding-inline: 20px;
 }
+
+#vermelho {
+  color: red;
+}
+
+#azul {
+  color: blue;
+}
+
+#verde {
+  color: #00bf63;
+}

@@ -41,6 +41,7 @@ class TrianguloRetangulo {
     this.mostrarAngulos();
     this.mostrarLados();
     this.mostrarValoresLados();
+    this.mostrarCalculo();
     pop();
   }
 
@@ -193,6 +194,28 @@ class TrianguloRetangulo {
       -this.beta.angulo + map(this.beta.angulo, 0, 90, 90, 270)
     );
     pop();
+  }
+
+  mostrarCalculo() {
+    /* Tangente */
+    let tangente = tan(this.alpha.angulo);
+    text(`Tg ${this.alpha.angulo}° =`, width / 8, height / 7);
+    text(`C. Oposto`, width / 3.65, height / 8);
+    line(width / 4, height / 7.5, width / 2.25, height / 7.5);
+    text(`C. Adjacente`, width / 3.8, height / 6.25);
+    text(`${tangente.toFixed(4)} = x / ${this.b}`, width / 8, height / 4.75);
+    text(`x = ${tangente.toFixed(4)} * ${this.b}`, width / 8, height / 4);
+    text(`x = ${(tangente * this.b).toFixed(2)}`, width / 8, height / 3.5);
+
+    let cosseno = cos(this.alpha.angulo);
+    /* Cosseno */
+    text(`Cos ${this.alpha.angulo}° =`, width / 8, height * 0.4);
+    text(`C. Adjacente`, width / 3.7, height * 0.38);
+    line(width / 3.8, height * 0.39, width / 2.25, height * 0.39);
+    text(`Hipotenusa`, width / 3.6, height * 0.42);
+    text(`${cosseno.toFixed(4)} = ${this.b} / y`, width / 8, height * 0.465);
+    text(`y = ${this.b} / ${cosseno.toFixed(4)}`, width / 8, height * 0.505);
+    text(`y = ${(this.b / cosseno).toFixed(2)}`, width / 8, height * 0.54);
   }
 
   _atualizarAngulos() {

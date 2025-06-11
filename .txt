@@ -1,0 +1,7 @@
+Alarmantes
+* Razões Trigonométricas: Seleção de lados funcionais; Tabela personalizada;
+* Circunferência Trigonométrica: Permitir o acesso dos valores a partir dos ângulos; Passo a passo com dialog
+* Funções Trigonométricas: Pontos de indeterminação na função tangente; Marcador não funcional
+
+TODO:
+* Circunferência Trigonométrica: Passo a passo com dialog

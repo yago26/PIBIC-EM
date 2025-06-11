@@ -1,6 +1,17 @@
 /* CABEÇALHO */
 header {
   margin-bottom: 3%;
+  animation: transicaoTitulo 1s;
+}
+
+@keyframes transicaoTitulo {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 /* SEÇÕES */
@@ -26,6 +37,7 @@ input[type="text"] {
 #agrupador {
   align-items: center;
   justify-content: center;
+  animation: transicao 0.75s;
 }
 
 .container {
@@ -54,20 +66,25 @@ input[type="text"] {
   padding: 15px;
 }
 
-#tabela {
+.tabela {
   width: 100%;
   text-align: center;
   border-radius: 10px;
 }
 
-#tabela th,
-#tabela td {
+.tabela th,
+.tabela td {
   padding: 5px;
 }
 
-#tabela thead,
-#tabela td:not(td.valorTabela) {
+.tabela thead,
+.tabela td:not(td.valorTabela) {
   background-color: rgb(162, 255, 182);
+}
+
+.tabela thead th button {
+  background: none;
+  border: none;
 }
 
 .valorTabela {
@@ -91,4 +108,54 @@ input[type="text"] {
 
 #verde {
   color: #00bf63;
+}
+
+#modal {
+  width: 60%;
+  height: 60%;
+  border: none;
+  padding: 50px;
+  text-align: center;
+  border-radius: 10px;
+
+  animation: transicao 0.5s;
+}
+
+@keyframes transicao {
+  from {
+    opacity: 0;
+    position: relative;
+    top: 100px;
+  }
+
+  to {
+    opacity: 1;
+    position: relative;
+    top: 0;
+  }
+}
+
+#modal header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+}
+
+#modal header h2 {
+  margin: 0;
+  align-self: center;
+}
+
+#modal header button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 15%;
+  font-weight: bold;
+  background-color: rgb(255, 75, 75);
+  color: white;
+}
+
+#modal hr {
+  margin-bottom: 50px;
 }

@@ -19,16 +19,4 @@ class Tela {
     }
     pop();
   }
-
-  mostrarEquacoes() {
-    push();
-    this._equacoes(y, [`Seno 30° = `, ]);
-    this._equacoes(y);
-    this._equacoes(y);
-    pop();
-  }
-
-  _equacoes() {
-
-  }
 }
